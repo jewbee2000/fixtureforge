@@ -1,6 +1,6 @@
 # FixtureForge specification
 
-Status: refined proposal; M0 baseline comparison is pending. No implementation or benchmark results are claimed. Read [REQUIREMENTS.md](REQUIREMENTS.md) first for priorities, rationale, external-user interfaces, and release gates.
+Status: deterministic implementation with executed evidence in ../evidence/progress.md. Reference dimensions remain the contract; see DECISIONS.md and PUBLIC_API.md for documented implementation choices. Physical measurements remain absent. Read [REQUIREMENTS.md](REQUIREMENTS.md) first for priorities, rationale, external-user interfaces, and release gates.
 
 
 ## Restricted fixture family
@@ -29,7 +29,7 @@ Proposed modules: requirements/, geometry/, export/, inspect/, generate/, report
 
 Output assembly.step, base.stl, clamp.stl, inspection.json, dimensions.svg, report.html, and manifest.json. Include input hash, CAD kernel and library versions, source commit, geometry hashes, assembly transform, and test results. Import STEP in a fresh process for verification. STL is a tessellated manufacturing convenience and cannot serve as the only dimensional oracle.
 
-Target command, to be implemented: `python -m fixtureforge build examples/sensor_24mm.json --output artifacts/demo`. It exits nonzero for infeasible inputs or failed geometry. `python -m fixtureforge demo --offline --output artifacts/demo` additionally demonstrates a rejected candidate and corrected version. Commands are future interfaces, not implemented in this planning package.
+Implemented command: `python -m fixtureforge build examples/sensor_24mm.json --output artifacts/demo`. It exits nonzero for infeasible inputs or failed geometry. `python -m fixtureforge demo --offline --output artifacts/demo` additionally demonstrates a rejected candidate and corrected version. These commands are implemented; see PUBLIC_API.md for failure semantics.
 
 ## Reference designs and bounded complexity
 

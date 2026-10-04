@@ -1,6 +1,6 @@
 # Acceptance and evidence plan
 
-Status: test design only; no application tests have run. Read [REQUIREMENTS.md](REQUIREMENTS.md) for the full prioritized register, rationale, applicability, and acceptance criteria, and [SPEC.md](SPEC.md) for the reference-case contracts. [requirements.json](../requirements.json) provides planned test paths. Avoid a second independently edited requirements table.
+Status: executed deterministic acceptance checks. See ../evidence/acceptance.xml and ../evidence/requirements-evidence.json for results and applicability. Browser layout and physical validation remain unverified. Read [REQUIREMENTS.md](REQUIREMENTS.md) for the full prioritized register, rationale, applicability, and acceptance criteria, and [SPEC.md](SPEC.md) for the reference-case contracts. [requirements.json](../requirements.json) provides planned test paths. Avoid a second independently edited requirements table.
 
 ## Required layers
 

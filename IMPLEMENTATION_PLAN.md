@@ -1,6 +1,6 @@
 # FixtureForge implementation plan
 
-Revised 2026-10-04. Begin with [requirements and rationale](docs/REQUIREMENTS.md). The previous all-features-at-once plan is superseded by this useful-core-first sequence. Application implementation has not started.
+Revised 2026-10-04. Begin with [requirements and rationale](docs/REQUIREMENTS.md). The previous all-features-at-once plan is superseded by this useful-core-first sequence. The deterministic implementation now follows this sequence; see TASKS.md and evidence/progress.md for executed status. Estimates below were planning assumptions, not measured human effort.
 
 ## Purpose and feasibility
 

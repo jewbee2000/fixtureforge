@@ -16,11 +16,17 @@ fixtureforge = "fixtureforge.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+fixtureforge = ["_provenance.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]
 
 [tool.mypy]
 files = ["src/fixtureforge"]

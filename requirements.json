@@ -1,173 +1,270 @@
 {
   "schema_version": 2,
   "project": "fixtureforge",
-  "status": "planned",
+  "status": "deterministic_local_release",
   "requirements": [
     {
       "id": "FF-01",
       "requirement": "FixtureSpec validates units, bounds, and coupled feasibility constraints before geometry construction.",
       "acceptance": "Reject negative, nonfinite, out-of-range, and impossible pitch/diameter combinations with a specific explanation.",
       "planned_test": "tests/acceptance/test_input_validation.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Individually legal dimensions can combine into impossible geometry; reject rather than silently redesign.",
       "milestone": "M0",
       "applies_when": "Core v1 release",
-      "dependencies": []
+      "dependencies": [],
+      "executed_tests": [
+        "tests.acceptance.test_boundary_properties::test_coupled_pitch_boundaries",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[units-inch]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[schema_version-2.0]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm--1]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm-nan]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[wall_mm-2.39]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[base_mm-4.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_length_mm-24.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[clearance_mm-1.01]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[mount_pitch_y_mm-30]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[mount_pitch_x_mm-31.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm-inf]",
+        "tests.acceptance.test_input_validation::test_defaults_and_equal_boundaries"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-02",
       "requirement": "Every accepted configuration produces exactly two valid, positive-volume single solids.",
       "acceptance": "Inspect each BREP and STEP reimport in a fresh process; reject null, merged, or self-invalid geometry.",
       "planned_test": "tests/acceptance/test_solid_validity.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Pretty meshes are not sufficient evidence of valid editable manufacturing solids.",
       "milestone": "M1",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes",
+        "tests.acceptance.test_solid_validity::test_reimported_solids"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-03",
       "requirement": "Bore, hole pitches, base thickness, and datums agree with requirements within 0.05 mm.",
       "acceptance": "Independent section/edge/plane queries of reimported STEP measure dimensions.",
       "planned_test": "tests/acceptance/test_dimensional_conformance.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Inspecting exports independently catches generator mistakes and conversion drift.",
       "milestone": "M1",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_dimensional_conformance::test_dimensions_from_surfaces"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-04",
       "requirement": "Sensor and connector keepouts remain clear except for explicitly intended contact surfaces.",
       "acceptance": "Boolean intersections and known collision mutations verify the rule and its exclusions.",
       "planned_test": "tests/acceptance/test_keepout_clearance.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "A nominally fitting clamp is unusable if it obstructs the sensor or connector.",
       "milestone": "M2",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-05",
       "requirement": "Fastener and tool-access envelopes remain usable in the prescribed assembly sequence.",
       "acceptance": "Conservative swept tool envelopes identify intentional inaccessible configurations; sampled frames only illustrate the specified straight path and cannot establish clearance.",
       "planned_test": "tests/acceptance/test_assembly_access.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Fasteners need a usable tool path, not just a correctly sized hole.",
       "milestone": "M2",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]",
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-06",
       "requirement": "Wall, base, and build-volume requirements are checked on generated geometry.",
       "acceptance": "Deliberately thin or oversized parts fail even if their input metadata claims compliance.",
       "planned_test": "tests/acceptance/test_manufacturing_geometry.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Manufacturing rules must be checked against the actual shape rather than trusted input metadata.",
       "milestone": "M2",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-07",
       "requirement": "All six reference designs pass and all eight invalid cases are rejected for their intended cause.",
       "acceptance": "Frozen inventory and explicit case-to-requirement mapping, not just counting nonzero exits.",
       "planned_test": "tests/acceptance/test_case_inventory.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Known invalid designs test whether the geometry inspector catches realistic mistakes.",
       "milestone": "M2",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-08",
       "requirement": "STEP and STL export preserve units and per-part identity; round trips remain within tolerance.",
       "acceptance": "Reimport STEP, compare volume/bounds, and check STL watertightness and triangle orientation.",
       "planned_test": "tests/acceptance/test_export_integrity.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Engineers need interoperable editable geometry and unambiguous units.",
       "milestone": "M1",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_export_integrity::test_mesh_identity_units_orientation",
+        "tests.acceptance.test_solid_validity::test_reimported_solids"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-09",
       "requirement": "Offline demonstration shows a rejected candidate and a corrected fixture without a model service.",
       "acceptance": "Run without credentials and network; inspect actual generated CAD and reports.",
       "planned_test": "tests/acceptance/test_offline_demo.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "The useful core should work without paid model access.",
       "milestone": "M3",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_offline_demo::test_demo_with_python_egress_denied"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-10",
       "requirement": "Any generated-code experiment uses bounded isolation and a read-only evaluator.",
       "acceptance": "Timeout, path-escape, and evaluator-write probes fail; JSON-only generation cannot execute code.",
       "planned_test": "tests/acceptance/test_generation_boundary.py",
-      "status": "not_implemented",
+      "status": "not_applicable",
       "priority": "must",
       "rationale": "A generated script must not be able to rewrite the inspector or escape its execution boundary.",
       "milestone": "M3",
       "applies_when": "Only when executing untrusted generated code; ordinary STEP/JSON inspection must not execute Python from its inputs.",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [],
+      "disposition": "Generated-code execution disabled; no isolation downgrade. Data-only input test executed."
     },
     {
       "id": "FF-11",
       "requirement": "Inspection output separates computed geometry from unmeasured physical fit and strength.",
       "acceptance": "Report labels geometric checks, assumptions, and absent physical tests explicitly.",
       "planned_test": "tests/acceptance/test_claim_boundaries.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Geometric clearance is not evidence of clamping force, print quality, or physical strength.",
       "milestone": "M3",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_claim_boundaries::test_unmeasured_claims_are_explicit"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-12",
       "requirement": "Fresh installation and deterministic inputs reproduce the required artifacts within numerical tolerance.",
       "acceptance": "Record stable versions; compare geometry semantically rather than assuming STEP file bytes are invariant.",
       "planned_test": "tests/acceptance/test_reproducibility.py",
-      "status": "not_implemented",
+      "status": "passed",
       "priority": "must",
       "rationale": "Kernel versions and numerical tolerance matter more than byte-identical STEP exports.",
       "milestone": "M4",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_reproducibility::test_fresh_wheel_and_semantic_repeat",
+        "tests.acceptance.test_reproducibility::test_measured_performance_bounds"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-13",
@@ -177,9 +274,13 @@
       "rationale": "The original plan overlaps heavily with an existing open-source project.",
       "acceptance": "Record pinned versions, precise supported checks, actual geometry, and missing behavior in docs/BASELINE.md. If a configuration or small plugin meets the requirements, build that integration rather than a generic CAD validation platform.",
       "planned_test": "tests/acceptance/test_baseline_artifacts.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
-      "dependencies": []
+      "dependencies": [],
+      "executed_tests": [
+        "tests.acceptance.test_baseline_artifacts::test_executed_comparison"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-14",
@@ -189,11 +290,17 @@
       "rationale": "The checker must help engineers with their CAD, not only validate geometry it generated itself.",
       "acceptance": "An independently scripted bracket/connector example imports through the public API and finds one known obstruction. Require mm units, stable part selectors, transforms, tool envelopes, and intended contacts; ambiguous identities or units are an error.",
       "planned_test": "tests/acceptance/test_external_step.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_external_step::test_external_bracket_and_repair",
+        "tests.acceptance.test_step_identity::test_multiple_solids_and_units_rejected",
+        "tests.acceptance.test_step_identity::test_translated_part_changes_collision"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-15",
@@ -203,11 +310,25 @@
       "rationale": "Sampling can miss an obstruction; restricted geometry makes a meaningful full-path check feasible.",
       "acceptance": "Freeze start/end transforms and assembly occupancy per step. A known obstruction between coarse sample positions must be caught. Reject unsupported rotation, curved motion, or failed Boolean geometry as unsupported/inconclusive, never clear. Report nominal clearance and any conservative inflation. Sampled illustrations alone cannot yield a continuous-path pass.",
       "planned_test": "tests/acceptance/test_swept_access.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]",
+        "tests.acceptance.test_boolean_failure::test_kernel_failure_cannot_be_clear",
+        "tests.acceptance.test_swept_access::test_obstruction_between_endpoints[shape0]",
+        "tests.acceptance.test_swept_access::test_obstruction_between_endpoints[shape1]",
+        "tests.acceptance.test_swept_access::test_exact_clearance",
+        "tests.acceptance.test_swept_access::test_diagonal_is_labelled_conservative"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-16",
@@ -217,11 +338,20 @@
       "rationale": "Different tools and maintenance sequences need different envelopes; avoid claiming universal wrench access.",
       "acceptance": "Changing a margin around a known threshold changes the verdict predictably. Removing a part clears only the documented subsequent steps. Unknown sequence rules are rejected.",
       "planned_test": "tests/acceptance/test_access_sequence.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "If selected after Must requirements pass",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-17",
@@ -231,11 +361,13 @@
       "rationale": "This makes access constraints useful in everyday design review and CI.",
       "acceptance": "A relocated boss introduces one new tool collision; identify the affected path and parts. A no-change rebuild produces no semantic difference.",
       "planned_test": "tests/acceptance/test_inspection_diff.py",
-      "status": "not_implemented",
+      "status": "deferred",
       "applies_when": "If selected after Must requirements pass",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [],
+      "disposition": "Revision diff deferred to keep v1 a narrow access integration."
     },
     {
       "id": "FF-18",
@@ -245,11 +377,13 @@
       "rationale": "The portfolio objective is satisfied by a verified agent-built tool, without making model generation a dependency.",
       "acceptance": "Validate model JSON through the same schema and inspector; preserve failed attempts. Freeform code requires separate isolation and is not part of normal import.",
       "planned_test": "tests/acceptance/test_optional_generation.py",
-      "status": "not_implemented",
+      "status": "deferred",
       "applies_when": "If selected after Must requirements pass",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [],
+      "disposition": "Model proposals deferred; no API spend, no live trial."
     },
     {
       "id": "FF-19",
@@ -259,11 +393,24 @@
       "rationale": "CI must not confuse an unsupported check or crashed evaluator with a valid result.",
       "acceptance": "For normal check commands: exit 0 only when every applicable required check passes; exit 1 for violations; exit 2 for invalid, incomplete, unsupported, or failed execution. Results preserve individual pass/fail/inconclusive/not_applicable states. The demo command separately verifies its expected negative cases. Unknown schema versions are rejected.",
       "planned_test": "tests/acceptance/test_public_contract.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload0]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload1]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload2]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload3]",
+        "tests.acceptance.test_public_contract::test_cli_invalid_is_two",
+        "tests.acceptance.test_public_contract::test_result_schema",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit0]",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit1]",
+        "tests.acceptance.test_resource_limits::test_json_limit_and_part_limit",
+        "tests.acceptance.test_resource_limits::test_large_step_is_rejected_before_import"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-20",
@@ -273,11 +420,20 @@
       "rationale": "A tool that hangs or silently drops large input cannot be trusted in an engineering workflow.",
       "acceptance": "During M0 freeze input-size/case limits and a target runtime with machine details. M4 records actual elapsed time and peak memory; an oversized input or elapsed-time limit produces a bounded error and incomplete result. CAD work runs in a killable worker. Compare against the baseline; do not claim universal performance.",
       "planned_test": "tests/acceptance/test_resource_limits.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_reproducibility::test_fresh_wheel_and_semantic_repeat",
+        "tests.acceptance.test_reproducibility::test_measured_performance_bounds",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit0]",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit1]",
+        "tests.acceptance.test_resource_limits::test_json_limit_and_part_limit",
+        "tests.acceptance.test_resource_limits::test_large_step_is_rejected_before_import"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-21",
@@ -287,11 +443,22 @@
       "rationale": "Engineers must be able to inspect data handling and legally reuse the code and examples.",
       "acceptance": "No credentials or telemetry are needed; the offline demo completes with egress disabled after installation. Source examples have provenance and redistributable licenses, or use a download recipe and lawful independently authored fixtures. Escape user text in HTML; reject output path traversal and avoid executing input data.",
       "planned_test": "tests/acceptance/test_data_and_license_boundaries.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[../escape.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[C:/private.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[\\\\\\\\host\\\\share\\\\part.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[a:stream.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_output_traversal_is_rejected",
+        "tests.acceptance.test_data_and_license_boundaries::test_html_escapes_input",
+        "tests.acceptance.test_data_and_license_boundaries::test_duplicate_keys_fail",
+        "tests.acceptance.test_offline_demo::test_demo_with_python_egress_denied"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     },
     {
       "id": "FF-22",
@@ -301,11 +468,15 @@
       "rationale": "A successful bundled demo alone is not evidence that another engineer can use the tool.",
       "acceptance": "Record a complete cold-start walkthrough: install, configure one non-default input, get an expected failure, correct it, and reproduce success without editing package source. Include actual commands, setup time, code/config size, and limitations versus the baseline. Label agent-executed walkthroughs as such; practitioner validation remains unverified until real feedback exists.",
       "planned_test": "tests/acceptance/test_consumer_walkthrough.py",
-      "status": "not_implemented",
+      "status": "passed",
       "applies_when": "Core v1 release",
       "dependencies": [
         "FF-13"
-      ]
+      ],
+      "executed_tests": [
+        "tests.acceptance.test_consumer_walkthrough::test_executed_consumer_evidence"
+      ],
+      "disposition": "Executed independent acceptance assertions; inspect applicability and limits in docs."
     }
   ],
   "requirements_revision": "2026-10-04",

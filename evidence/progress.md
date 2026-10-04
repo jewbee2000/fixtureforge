@@ -1,5 +1,47 @@
 # Progress
 
+## M4 completed — 2026-10-04
+
+Final full acceptance command `python -m pytest -q --tb=short
+--junitxml=evidence/acceptance.xml`: **61 passed in 85.50 seconds**, exit 0.
+`python -m ruff check src scripts tests`: passed. `python -m mypy
+src/fixtureforge`: passed, 12 source files. `python -m pip check`: passed.
+Output files are retained. Requirement IDs, actual test names, input/oracle/lock
+hashes, artifact hashes and source provenance are in requirements-evidence.json.
+
+`python scripts/package_release.py` produced the local wheel with embedded
+source provenance. `python scripts/consumer_walkthrough.py
+C:/Users/Walt/Documents/Codex/2026-10-03/g/outputs/consumers/fixtureforge-20261004`
+installed it in a separate fresh environment. Installation: 75.63 seconds;
+complete sequence: 109.01 seconds with warm package cache. A 40-line/730-byte
+non-default AccessSpec failed as expected (1), then passed (0) after changing Y.
+No consumer source code or package edits. Two 18 mm builds gave identical
+inspection JSON. This is agent-executed workflow evidence, not human adoption.
+
+`python scripts/benchmark.py`: three fresh-interpreter 24 mm builds took
+6.8473, 6.7414 and 6.7511 seconds, each exit 0. Sampled peak worker RSS:
+412286976, 413732864 and 413433856 bytes, below the frozen 2 GiB limit and
+60 second target. Full commands and artifact hashes are retained. Baseline's
+small geometry timing excludes imports and is not a comparable speed benchmark.
+
+Static CAD and replay PNGs were inspected. A caption overlap found on the first
+replay rendering was corrected. Local HTML browser navigation was blocked by
+browser URL policy; browser layout verification remains unrun. Reports' numerical
+contents, escaping, local resources and structural data were checked.
+
+The canonical 767-word website draft and repository copy now describe observed
+work, with the actual replay image and no fabricated biography or measurements.
+`bundle check` and both normal / `--drafts --unpublished` Jekyll builds passed in
+the website-drafts checkout. The normal HTML output contains no FixtureForge
+article; the explicit preview does. `published: false` remains set. Desktop/mobile
+browser preview and hosted repository/evidence links remain publication work.
+
+Disposition: FF-16 implemented (margin and explicit occupancy); FF-17 revision
+diff deferred; FF-18 live/model proposals deferred; FF-10 not applicable because
+generated-code execution is disabled. No remote, deployment, model spend or
+hardware purchase. Future work is independent practitioner feedback, physical
+fit/load testing if desired, and publication only after separate authorization.
+
 ## M1–M3 core complete — 2026-10-04
 
 Initial full suite: `python -m pytest -q --tb=short --junitxml=evidence/acceptance.xml`

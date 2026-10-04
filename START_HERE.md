@@ -1,6 +1,6 @@
 # Start here
 
-FixtureForge is currently a planning repository. The implementation agent should build the software, tests, and demonstration from these files. No application commands are implemented yet.
+FixtureForge has a deterministic local implementation. Start with README.md for verified commands, docs/PUBLIC_API.md for the supported contract, and evidence/progress.md for executed results. The planning documents remain the requirements baseline; their historical estimates are not measurements.
 
 ## Read in order
 

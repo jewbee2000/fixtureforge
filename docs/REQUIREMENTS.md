@@ -1,6 +1,6 @@
 # FixtureForge requirements and rationale
 
-Revision 2026-10-04. Status: planned, not implemented. This audit supersedes the earlier unprioritized feature list. [requirements.json](../requirements.json) is the machine-readable register; [SPEC.md](SPEC.md) supplies detailed reference-case constants and contracts. Keep them synchronized.
+Revision 2026-10-04. Status: deterministic local release; see ../evidence/requirements-evidence.json for executed evidence and applicability. This audit supersedes the earlier unprioritized feature list. [requirements.json](../requirements.json) is the machine-readable register; [SPEC.md](SPEC.md) supplies detailed reference-case constants and contracts. Keep them synchronized.
 
 ## Purpose and practical value
 
@@ -46,7 +46,7 @@ FixtureSpec validates units, bounds, and coupled feasibility constraints before 
 
 **Acceptance:** Reject negative, nonfinite, out-of-range, and impossible pitch/diameter combinations with a specific explanation.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_input_validation.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_input_validation.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-02 — Must — M1
 
@@ -56,7 +56,7 @@ Every accepted configuration produces exactly two valid, positive-volume single 
 
 **Acceptance:** Inspect each BREP and STEP reimport in a fresh process; reject null, merged, or self-invalid geometry.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_solid_validity.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_solid_validity.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-03 — Must — M1
 
@@ -66,7 +66,7 @@ Bore, hole pitches, base thickness, and datums agree with requirements within 0.
 
 **Acceptance:** Independent section/edge/plane queries of reimported STEP measure dimensions.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_dimensional_conformance.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_dimensional_conformance.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-04 — Must — M2
 
@@ -76,7 +76,7 @@ Sensor and connector keepouts remain clear except for explicitly intended contac
 
 **Acceptance:** Boolean intersections and known collision mutations verify the rule and its exclusions.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_keepout_clearance.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_keepout_clearance.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-05 — Must — M2
 
@@ -86,7 +86,7 @@ Fastener and tool-access envelopes remain usable in the prescribed assembly sequ
 
 **Acceptance:** Conservative swept tool envelopes identify intentional inaccessible configurations; sampled frames only illustrate the specified straight path and cannot establish clearance.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_assembly_access.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_assembly_access.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-06 — Must — M2
 
@@ -96,7 +96,7 @@ Wall, base, and build-volume requirements are checked on generated geometry.
 
 **Acceptance:** Deliberately thin or oversized parts fail even if their input metadata claims compliance.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_manufacturing_geometry.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_manufacturing_geometry.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-07 — Must — M2
 
@@ -106,7 +106,7 @@ All six reference designs pass and all eight invalid cases are rejected for thei
 
 **Acceptance:** Frozen inventory and explicit case-to-requirement mapping, not just counting nonzero exits.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_case_inventory.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_case_inventory.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-08 — Must — M1
 
@@ -116,7 +116,7 @@ STEP and STL export preserve units and per-part identity; round trips remain wit
 
 **Acceptance:** Reimport STEP, compare volume/bounds, and check STL watertightness and triangle orientation.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_export_integrity.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_export_integrity.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-09 — Must — M3
 
@@ -126,7 +126,7 @@ Offline demonstration shows a rejected candidate and a corrected fixture without
 
 **Acceptance:** Run without credentials and network; inspect actual generated CAD and reports.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_offline_demo.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_offline_demo.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-10 — Must — M3
 
@@ -136,7 +136,7 @@ Any generated-code experiment uses bounded isolation and a read-only evaluator.
 
 **Acceptance:** Timeout, path-escape, and evaluator-write probes fail; JSON-only generation cannot execute code.
 
-**Applies:** Only when executing untrusted generated code; ordinary STEP/JSON inspection must not execute Python from its inputs. **Planned evidence:** `tests/acceptance/test_generation_boundary.py`. **Status:** not implemented.
+**Applies:** Only when executing untrusted generated code; ordinary STEP/JSON inspection must not execute Python from its inputs. **Planned evidence:** `tests/acceptance/test_generation_boundary.py`. **Status:** not_applicable; see machine-readable executed evidence.
 
 ### FF-11 — Must — M3
 
@@ -146,7 +146,7 @@ Inspection output separates computed geometry from unmeasured physical fit and s
 
 **Acceptance:** Report labels geometric checks, assumptions, and absent physical tests explicitly.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_claim_boundaries.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_claim_boundaries.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-12 — Must — M4
 
@@ -156,7 +156,7 @@ Fresh installation and deterministic inputs reproduce the required artifacts wit
 
 **Acceptance:** Record stable versions; compare geometry semantically rather than assuming STEP file bytes are invariant.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_reproducibility.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_reproducibility.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-13 — Must — M0
 
@@ -166,7 +166,7 @@ Compare CADCLAW and direct CadQuery/build123d checks on a screw-tool obstruction
 
 **Acceptance:** Record pinned versions, precise supported checks, actual geometry, and missing behavior in docs/BASELINE.md. If a configuration or small plugin meets the requirements, build that integration rather than a generic CAD validation platform.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_baseline_artifacts.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_baseline_artifacts.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-14 — Must — M1
 
@@ -176,7 +176,7 @@ Check externally authored STEP parts using an explicit AccessSpec JSON without c
 
 **Acceptance:** An independently scripted bracket/connector example imports through the public API and finds one known obstruction. Require mm units, stable part selectors, transforms, tool envelopes, and intended contacts; ambiguous identities or units are an error.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_external_step.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_external_step.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-15 — Must — M2
 
@@ -186,7 +186,7 @@ For v1, tool and connector paths are fixed-orientation straight translations of 
 
 **Acceptance:** Freeze start/end transforms and assembly occupancy per step. A known obstruction between coarse sample positions must be caught. Reject unsupported rotation, curved motion, or failed Boolean geometry as unsupported/inconclusive, never clear. Report nominal clearance and any conservative inflation. Sampled illustrations alone cannot yield a continuous-path pass.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_swept_access.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_swept_access.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-16 — Should — M3
 
@@ -196,7 +196,7 @@ Support user-specified tool clearance margins and removal/reassembly sequences w
 
 **Acceptance:** Changing a margin around a known threshold changes the verdict predictably. Removing a part clears only the documented subsequent steps. Unknown sequence rules are rejected.
 
-**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_access_sequence.py`. **Status:** not implemented.
+**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_access_sequence.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-17 — Should — M3
 
@@ -206,7 +206,7 @@ Compare inspection reports between CAD revisions and locate changed obstruction 
 
 **Acceptance:** A relocated boss introduces one new tool collision; identify the affected path and parts. A no-change rebuild produces no semantic difference.
 
-**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_inspection_diff.py`. **Status:** not implemented.
+**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_inspection_diff.py`. **Status:** deferred; see machine-readable executed evidence.
 
 ### FF-18 — Could — M3
 
@@ -216,7 +216,7 @@ Add model-proposed FixtureSpec JSON and bounded repair as an optional demonstrat
 
 **Acceptance:** Validate model JSON through the same schema and inspector; preserve failed attempts. Freeform code requires separate isolation and is not part of normal import.
 
-**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_optional_generation.py`. **Status:** not implemented.
+**Applies:** If selected after Must requirements pass **Planned evidence:** `tests/acceptance/test_optional_generation.py`. **Status:** deferred; see machine-readable executed evidence.
 
 ### FF-19 — Must — M2
 
@@ -226,7 +226,7 @@ Publish a versioned input and result schema, stable requirement IDs, public Pyth
 
 **Acceptance:** For normal check commands: exit 0 only when every applicable required check passes; exit 1 for violations; exit 2 for invalid, incomplete, unsupported, or failed execution. Results preserve individual pass/fail/inconclusive/not_applicable states. The demo command separately verifies its expected negative cases. Unknown schema versions are rejected.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_public_contract.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_public_contract.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-20 — Must — M4
 
@@ -236,7 +236,7 @@ Declare resource limits and measure repeatable performance for the supported wor
 
 **Acceptance:** During M0 freeze input-size/case limits and a target runtime with machine details. M4 records actual elapsed time and peak memory; an oversized input or elapsed-time limit produces a bounded error and incomplete result. CAD work runs in a killable worker. Compare against the baseline; do not claim universal performance.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_resource_limits.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_resource_limits.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-21 — Must — M4
 
@@ -246,7 +246,7 @@ Keep offline workflows local by default and document dependency, fixture, manual
 
 **Acceptance:** No credentials or telemetry are needed; the offline demo completes with egress disabled after installation. Source examples have provenance and redistributable licenses, or use a download recipe and lawful independently authored fixtures. Escape user text in HTML; reject output path traversal and avoid executing input data.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_data_and_license_boundaries.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_data_and_license_boundaries.py`. **Status:** passed; see machine-readable executed evidence.
 
 ### FF-22 — Must — M4
 
@@ -256,7 +256,7 @@ Demonstrate adoption from a separate clean consumer directory using only the doc
 
 **Acceptance:** Record a complete cold-start walkthrough: install, configure one non-default input, get an expected failure, correct it, and reproduce success without editing package source. Include actual commands, setup time, code/config size, and limitations versus the baseline. Label agent-executed walkthroughs as such; practitioner validation remains unverified until real feedback exists.
 
-**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_consumer_walkthrough.py`. **Status:** not implemented.
+**Applies:** Core v1 release **Planned evidence:** `tests/acceptance/test_consumer_walkthrough.py`. **Status:** passed; see machine-readable executed evidence.
 
 ## Explicit scope exclusions
 
@@ -292,7 +292,7 @@ Verification: Absent from the v1 supported-features list; README and reports do 
 
 ## Completion and actual usefulness
 
-Technical readiness requires passing evidence for every applicable Must requirement, explicit dispositions for Should items, a negative-case demonstration, a clean installation, and an external consumer example. A failing or inconclusive required check blocks a successful result. All planned test paths above are future work.
+Technical readiness requires passing evidence for every applicable Must requirement, explicit dispositions for Should items, a negative-case demonstration, a clean installation, and an external consumer example. A failing or inconclusive required check blocks a successful result. The planned paths are retained for history; actual executed tests are mapped in requirements.json and evidence/requirements-evidence.json.
 
 Practical usefulness is a separate hypothesis. Record the baseline comparison and the consumer walkthrough, including friction and limitations. A later independent engineer using the tool on their own driver, trace, or CAD assembly would be stronger evidence. Do not contact anyone or fabricate that validation. The first release may honestly be described as a useful candidate tool with demonstrated workflows, not a field-proven industry standard.
 

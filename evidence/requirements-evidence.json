@@ -1,0 +1,352 @@
+{
+  "schema_version": "1.0",
+  "command": "python -m pytest -q --tb=short --junitxml=evidence/acceptance.xml",
+  "exit_code": 0,
+  "test_count": 61,
+  "source_commit": "38041ae189c3c528f6b495688c665914af813cbe",
+  "dirty_state_at_recording": true,
+  "lock_sha256": "474f9f07f49d00bbff2a96287f1934b3e93edc73be45013d9b89834daeb41ab9",
+  "oracle_sha256": "c69d6bec9731ce62f4219b7b58bef1cff802babff0f8c7830110cda44d691b5b",
+  "test_sources_sha256": {
+    "tests/conftest.py": "41eb26136ad0ff86bdf2385a9bd2057763fbf14c145c3827ad4b8d0f66a01a03",
+    "tests/acceptance/test_access_sequence.py": "275e396869f43c455337194b0be39ad86abed69df6caf3dc0fc0dd000cf6f064",
+    "tests/acceptance/test_baseline_artifacts.py": "8c08b873990a3ee2a7dfa5bd9151e3d4efe2a7d043d1c02d793cabea6fb93ddd",
+    "tests/acceptance/test_boolean_failure.py": "c6a55960ca72aa5697de24af1727ab80f4fbf2d498dc217b5565389d8967350f",
+    "tests/acceptance/test_boundary_properties.py": "50ce5357af1130065b61729676a7b2757bbbfa4c2c525731f311e8d264ca0ee3",
+    "tests/acceptance/test_case_inventory.py": "5fc91d831b0f5992c26328814e370c53f154f570002c3752ed1ba3a7f6e6779e",
+    "tests/acceptance/test_claim_boundaries.py": "8895e9e86ccf09264cade49abf990bac3cd46b05b7ec6851871d179a232bdf70",
+    "tests/acceptance/test_consumer_walkthrough.py": "ccff0a5eaa380b2fec227648759b95521ae7efc28b1d276242aa6f668d2e29ff",
+    "tests/acceptance/test_data_and_license_boundaries.py": "8b5899135bed5277e6f0335b91e1fe3c85e4d859a49d9ee58e9591e70bbb1e9f",
+    "tests/acceptance/test_dimensional_conformance.py": "8919922867d134e2f1cc330bd2ddc7226366e24e0e68ae71bdadc332c24a0c0b",
+    "tests/acceptance/test_export_integrity.py": "8121b81e4f7c53f4e49f3373cd777a1e9b0e104e23a17bb79d4ebfc5bed0c600",
+    "tests/acceptance/test_external_step.py": "240864363ee83eca5e91cc5288043e322f75e2697d196e99af52cfde8b9f1ff1",
+    "tests/acceptance/test_generation_boundary.py": "c3522ca3b594355b807dfc62529e5b3dda6867e842a831c1e34f5cd84d42ca1b",
+    "tests/acceptance/test_input_validation.py": "d3387568463de199f3108afc748502b7d0f7371e75a05674341b6e8b33200518",
+    "tests/acceptance/test_offline_demo.py": "dfea4418614c3f109d17fb980c7ae77116fd6d3f4412bab39fe8f9b984d76c44",
+    "tests/acceptance/test_public_contract.py": "03779a17f3acdcc978583f851b45daa5b16aa5fd1e8076331265271d5c6e7198",
+    "tests/acceptance/test_reproducibility.py": "e93733bf3c45da0482d457fe47ff4c43b5a62b7f6cd7049a3d53ff3a6cf50065",
+    "tests/acceptance/test_resource_limits.py": "c8887829a0e80589d6f6d16f59a0ec704f6cc6cc14b88ebbc30e98ff99c48da2",
+    "tests/acceptance/test_solid_validity.py": "77df25d5abc009bfbab01db0504462c61d73c56662dae102570e951fb7aa1ec3",
+    "tests/acceptance/test_step_identity.py": "d09491c2a7975c093e843d927bcd333a442d2a5f2fe8f776f4b22538ff6085ac",
+    "tests/acceptance/test_swept_access.py": "07a2446e9d3477699222cafdc4e8aa374844e335506c32bb3cdd3b211f6d89da"
+  },
+  "input_hashes": {
+    "sensor_12mm.json": "36584e28f522a3e3332293ecb525340529da3530adb3cf89927e4dbb60be72af",
+    "sensor_16mm.json": "5461460e2d86388f1f0af5b5e38dd1d717fbb663480f6eda770874781280e543",
+    "sensor_20mm.json": "284823802468bcbe5ed395039515f3e6c36ac83b4107799d10516fbe8340c055",
+    "sensor_24mm.json": "0628ac87a1122fe283e5c0626781c88262f991b7d33b89ae095a053093664aae",
+    "sensor_32mm.json": "34a186b9ed182ada9ba417729d299e4a8f443cd44b3ac27f040cc69babe0bc59",
+    "sensor_40mm.json": "ab72fb7a4ec04190a21c10ceabd82d7fd579b4cf1b5f76e124192af27d73d0a3"
+  },
+  "artifact_hashes": {
+    "acceptance.txt": "76106ba8c162c085968258e423cbe48be9a90767b775323fc0f5ce3e10a24526",
+    "acceptance.xml": "4229159ed2c4e8e37dad1f5099a750a6fe7b6e65c194d70de4a923bb3758a55f",
+    "baseline.json": "cf6043151bc40105961be5efe0718bba9fe22babbc87a5d1b69af9f3958c1aeb",
+    "consumer.json": "e00249b4f5f4ffde5b163ea83dfaa159cfcc745d8a5e09ccbfd75b25fb4deb1e",
+    "dependencies.txt": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+    "dependency-licenses.json": "e4fb29ef09efc3f356fa8da655ea338994ae7a74bdf0a3ca518eb3200722a7ab",
+    "fixture-24.png": "df30434e580cb5b05afcb5068cd70b8de19243dbc7783a16b888bddbc5fd614a",
+    "lint.txt": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "m1-m2-first-check.txt": "0fbc9a9dd71023f574ff32a383f5ff92545584c02be64dfa6b721c13e8d08c7c",
+    "m2-check.txt": "88aa0a8469e1781b1f989da38048006dbad392fc29631832c8dd7a7b35ed15b4",
+    "oracle-before-implementation.txt": "5410bacedf0cc5bb1b5d81b7f3913af46cf0db7035a7ccac1964bfa421daad37",
+    "performance.json": "1ad7022b0a2a2832cd4351ebe8b37f380931f00ba135566c6230f04f35ea962d",
+    "README.md": "04d7a599d6c6a2e4817c420d58f600d826decdf0a9505098085b5fb33eaa9983",
+    "replay.png": "850d35542d7e616094cf935a65c6d15b1a9e53aba3459a690be158eb927bad76",
+    "seeded-failures-v1.json": "b0edf13123645e19cfa3922bdad4ef2bf6af043d5644ea260c9ca0f1b338dc37",
+    "seeded-failures.json": "f3ffa7111f2efce8ae891514c52bb704e107cbe9caf877dfd507aad6beb1c67c",
+    "site-build.txt": "46ca947778d4898fcb2d64c4ad5df0e5edb9f41db608be4aa174a5d97488a95b",
+    "site-preview-build.txt": "e49c80e21c26af3a610f5706f9318eafc93de29900c550ebf93716fd18891160",
+    "types-first.txt": "eb9c870d7aabc47d24b0818eee5d3d3392cdec8a9fc87cf9581e6ef2b081ffe4",
+    "types.txt": "99774ae94d9c061d2ee8a3c00a79bb1c6dfd2b0998f7cb389be50e19a0dc7d15"
+  },
+  "requirements": [
+    {
+      "requirement": "FF-01",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_boundary_properties::test_coupled_pitch_boundaries",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[units-inch]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[schema_version-2.0]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm--1]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm-nan]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[wall_mm-2.39]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[base_mm-4.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_length_mm-24.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[clearance_mm-1.01]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[mount_pitch_y_mm-30]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[mount_pitch_x_mm-31.99]",
+        "tests.acceptance.test_input_validation::test_reject_invalid_before_cad[sensor_diameter_mm-inf]",
+        "tests.acceptance.test_input_validation::test_defaults_and_equal_boundaries"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-02",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes",
+        "tests.acceptance.test_solid_validity::test_reimported_solids"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-03",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_dimensional_conformance::test_dimensions_from_surfaces"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-04",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-05",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]",
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-06",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-07",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_case_inventory::test_reference_family[12]",
+        "tests.acceptance.test_case_inventory::test_reference_family[16]",
+        "tests.acceptance.test_case_inventory::test_reference_family[20]",
+        "tests.acceptance.test_case_inventory::test_reference_family[24]",
+        "tests.acceptance.test_case_inventory::test_reference_family[32]",
+        "tests.acceptance.test_case_inventory::test_reference_family[40]",
+        "tests.acceptance.test_case_inventory::test_all_seeded_causes"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-08",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_export_integrity::test_mesh_identity_units_orientation",
+        "tests.acceptance.test_solid_validity::test_reimported_solids"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-09",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_offline_demo::test_demo_with_python_egress_denied"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-10",
+      "priority": "must",
+      "status": "not_applicable",
+      "tests": [],
+      "reason": "Generated-code execution disabled; no isolation downgrade. Data-only input test executed."
+    },
+    {
+      "requirement": "FF-11",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_claim_boundaries::test_unmeasured_claims_are_explicit"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-12",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_reproducibility::test_fresh_wheel_and_semantic_repeat",
+        "tests.acceptance.test_reproducibility::test_measured_performance_bounds"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-13",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_baseline_artifacts::test_executed_comparison"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-14",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_external_step::test_external_bracket_and_repair",
+        "tests.acceptance.test_step_identity::test_multiple_solids_and_units_rejected",
+        "tests.acceptance.test_step_identity::test_translated_part_changes_collision"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-15",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]",
+        "tests.acceptance.test_boolean_failure::test_kernel_failure_cannot_be_clear",
+        "tests.acceptance.test_swept_access::test_obstruction_between_endpoints[shape0]",
+        "tests.acceptance.test_swept_access::test_obstruction_between_endpoints[shape1]",
+        "tests.acceptance.test_swept_access::test_exact_clearance",
+        "tests.acceptance.test_swept_access::test_diagonal_is_labelled_conservative"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-16",
+      "priority": "should",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_access_sequence::test_clearance_margin_and_explicit_occupancy",
+        "tests.acceptance.test_access_sequence::test_contact_never_hides_overlap",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change0]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change1]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change2]",
+        "tests.acceptance.test_access_sequence::test_unsupported_semantics[change3]"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-17",
+      "priority": "should",
+      "status": "deferred",
+      "tests": [],
+      "reason": "Revision diff deferred to keep v1 a narrow access integration."
+    },
+    {
+      "requirement": "FF-18",
+      "priority": "could",
+      "status": "deferred",
+      "tests": [],
+      "reason": "Model proposals deferred; no API spend, no live trial."
+    },
+    {
+      "requirement": "FF-19",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload0]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload1]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload2]",
+        "tests.acceptance.test_public_contract::test_incomplete_contract_never_clear[payload3]",
+        "tests.acceptance.test_public_contract::test_cli_invalid_is_two",
+        "tests.acceptance.test_public_contract::test_result_schema",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit0]",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit1]",
+        "tests.acceptance.test_resource_limits::test_json_limit_and_part_limit",
+        "tests.acceptance.test_resource_limits::test_large_step_is_rejected_before_import"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-20",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_reproducibility::test_fresh_wheel_and_semantic_repeat",
+        "tests.acceptance.test_reproducibility::test_measured_performance_bounds",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit0]",
+        "tests.acceptance.test_resource_limits::test_cad_worker_is_killable[limit1]",
+        "tests.acceptance.test_resource_limits::test_json_limit_and_part_limit",
+        "tests.acceptance.test_resource_limits::test_large_step_is_rejected_before_import"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-21",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[../escape.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[C:/private.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[\\\\\\\\host\\\\share\\\\part.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_traversal_is_invalid[a:stream.step]",
+        "tests.acceptance.test_data_and_license_boundaries::test_output_traversal_is_rejected",
+        "tests.acceptance.test_data_and_license_boundaries::test_html_escapes_input",
+        "tests.acceptance.test_data_and_license_boundaries::test_duplicate_keys_fail",
+        "tests.acceptance.test_offline_demo::test_demo_with_python_egress_denied"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    },
+    {
+      "requirement": "FF-22",
+      "priority": "must",
+      "status": "passed",
+      "tests": [
+        "tests.acceptance.test_consumer_walkthrough::test_executed_consumer_evidence"
+      ],
+      "reason": "Executed independent acceptance assertions; inspect applicability and limits in docs."
+    }
+  ],
+  "limitations": [
+    "No physical validation or independent practitioner feedback.",
+    "HTML browser layout not verified; static CAD render inspected.",
+    "Offline test denies Python socket egress, not native OS networking.",
+    "Windows/Python 3.12 tested; other platforms unverified."
+  ]
+}

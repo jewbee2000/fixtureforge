@@ -1,22 +1,88 @@
-<!-- Prospective draft: revised requirements and BLOG_BRIEF.md govern the eventual article. No implementation results or novelty claims are established. -->
-
 # The fixture has to leave room for the wrench
 
-Unpublished prospective draft. Implementation and results are pending.
+Unpublished draft; canonical editorial copy is in website-drafts/_drafts/fixtureforge.md.
 
+I asked Codex to build a small engineering tool around a fairly ordinary question:
+can the tool actually reach the screw? A hole can have the correct diameter and
+still be inconveniently located behind something solid. FixtureForge gives that
+question an explicit geometric contract, using a sensor clamp as the example.
 
-One of the nice things about a small mechanical project is that it gives an abstract idea a very specific shape. In this case, that shape is a clamp for a cylindrical sensor. It is not a particularly glamorous object, which is part of the appeal.
+The first useful result was a reason to make the project smaller. CADCLAW already
+checks STEP assemblies, and CadQuery and build123d already provide the geometry
+operations. There was no reason to write another CAD kernel or call this a new
+general-purpose CAD validator. I directed the requirements and asked the agent
+to compare those tools before implementing anything substantial.
 
-I have enjoyed designing and printing parts for projects like bicycle components and a robotic pruning attachment. Those projects make the connection between a model on a screen and a useful physical object fairly direct. They also make it difficult to ignore the ordinary details: where the fastener goes, how the part is assembled, and whether there is room to get a tool into it.
+The comparison used two deliberately simple cases: a cylindrical screw-tool
+envelope and a box representing a connector. Each could sit at either endpoint
+without touching an obstacle. Moving between those endpoints passed through
+4 cubic millimeters of solid material. CadQuery and build123d agreed on that
+intersection, and CADCLAW found it when supplied with the complete swept solid.
+The missing piece in the reviewed workflow was declaring and constructing that
+path, then carrying its assumptions into a repeatable report.
 
-FixtureForge is an attempt to bring those details into an experiment with AI-generated designs. I want to give an agent a small set of requirements and have it propose a sensor fixture. The fixture needs to hold a particular diameter, fit a mounting pattern, leave the connector accessible, and produce files that someone else can inspect.
+FixtureForge therefore became a small integration. An engineer supplies STEP
+parts and JSON describing the tool or connector, its start and end positions,
+which parts are present, and any intended final contact. The checker constructs
+the entire swept envelope. It does not decide clearance by looking at a few
+animation frames. A thin obstacle between frames is still an obstacle, however
+smoothly the animation plays.
 
-The first version will be intentionally restrictive. It will generate one family of two-part clamps rather than attempt to design whatever mechanical object someone describes. I think that constraint makes the question more interesting: can the result satisfy a clear contract, including the parts of the contract that are easy to overlook in a pretty rendering?
+The restriction is deliberate. Paths are straight translations, orientations
+stay fixed, and envelopes are axis-aligned boxes or cylinders. Some nonaxial
+sweeps use enclosing boxes, which can report an obstruction that a more precise
+tool shape would avoid. The report identifies that conservatism. Curved motion,
+articulated wrenches, and flexible cables remain outside the contract.
 
-I want the checking software to look at the exported geometry. Asking a program what diameter it intended to draw is not the same as measuring the hole it actually produced. The inspection should also include the space occupied by a screw head, a connector, and the tool needed to assemble everything.
+![Rejected and corrected tool access](../evidence/replay.png)
 
-For the agent, the simplest version of the job is to propose dimensions in a structured format. A conventional parametric model can turn those dimensions into solids. That keeps the experiment manageable and gives a failed check something specific to say. If I later let the agent write arbitrary CAD code, it should still have to pass the same geometric checks.
+*Actual edges from the exported and reimported STEP model. The shaded regions
+show the complete tool envelope. This is a deliberately seeded replay, not a
+live model response or a photograph of a manufactured fixture.*
 
-There is an obvious limit here: checking a CAD model does not tell me how a printed part will fit or how much load it can carry. I want the report to be clear about that. A later print-and-measure experiment would be a good excuse to get away from the computer, but I do not want to label the model's dimensions as measurements of a part that does not exist.
+The replay gives the checker an intentionally bad driver line through the middle
+of the upper clamp. The report names the blocked path and the obstructing part.
+Moving the line back to the screw center clears it. Both versions remain in the
+output directory, so a green result does not erase the example that failed.
 
-The result I am hoping for is a modest but useful loop: describe a fixture, generate it, discover what is wrong, and improve it. A clamp that leaves room for the wrench would be a fine place to start.
+The acceptance suite also includes less theatrical defects: too little wall
+material, an impossible mounting pitch, a blocked connector, a screw-head
+collision, an inaccessible tool, joined halves, an empty solid, and an oversized
+part. During review, the agent refined two mutations to isolate their intended
+failure more carefully. The earlier results remain in the evidence directory.
+One test also needed a numerical correction: a computed volume of
+3.999999999999999 should be compared with a tolerance, not exact equality.
+
+I wanted the measurements to come from the exported object. The independent
+checks reimport STEP and inspect cylinder surfaces, hole axes, planes, bounds,
+and solid validity. The software checks STL watertightness and orientation too,
+but does not use a triangle mesh as the only dimensional oracle. The six
+reference sensor sizes pass the current checks. That is evidence about this
+restricted software contract, not a certificate for anything I might print.
+
+The separate consumer walkthrough mattered just as much as the bundled clamp.
+In a fresh environment outside the source checkout, the agent installed the
+wheel, configured an independently scripted bracket, obtained the expected
+failure, and corrected it without editing package source. It also built a
+non-default 18 mm fixture twice with identical inspection results. This was an
+agent-executed exercise; an independent engineer using their own assembly would
+be stronger evidence of usefulness.
+
+The reproducible entry point, after the README's local installation steps, is:
+
+```powershell
+python -m fixtureforge demo --offline --output artifacts/my-demo
+```
+
+The reports, failed inputs, test output, and requirement mapping are retained in
+the project. The draft's publication checklist still needs a verified public
+repository URL and hosted evidence links; I have not substituted a proposed URL
+for a working destination.
+
+There are practical limits beyond the path model. The sample needs underside
+space for nuts and a stated assembly order. No sensor has been clamped in a
+printed part, and no force, strength, fatigue, or print-quality measurements have
+been made. No paid model API was used and no live generation trial was run.
+Codex implemented the deterministic tool under the written requirements. The
+result is useful to inspect and challenge locally, while the physical fixture
+and its usefulness to other engineers still need their own tests.

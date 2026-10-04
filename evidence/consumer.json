@@ -1,0 +1,181 @@
+{
+  "label": "Agent-executed consumer walkthrough; practitioner validation unverified",
+  "consumer_directory": "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004",
+  "installation_seconds": 75.63159120000637,
+  "total_seconds": 109.00647550000576,
+  "package_source_edited": false,
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\projects\\fixtureforge\\.venv\\Scripts\\python.exe",
+        "-m",
+        "venv",
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.206814599994686
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-runtime-lock.txt"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 67.60460510000121
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "fixtureforge-0.1.0-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.9827517000012449
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.8331344999969588
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "inspect",
+        "blocked.json",
+        "--output",
+        "blocked"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 11.414957300003152
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "inspect",
+        "corrected.json",
+        "--output",
+        "corrected"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.6490570999958436
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "build",
+        "sensor-18.json",
+        "--output",
+        "sensor-18"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 13.025656300000264
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "build",
+        "sensor-18.json",
+        "--output",
+        "sensor-18-repeat"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.269808400000329
+    }
+  ],
+  "configuration_bytes": 730,
+  "configuration_lines": 40,
+  "consumer_code_lines": 0,
+  "nondefault_fixture": {
+    "schema_version": "1.0",
+    "units": "mm",
+    "sensor_diameter_mm": 18,
+    "sensor_length_mm": 35,
+    "mount_pitch_x_mm": 36,
+    "mount_pitch_y_mm": 60
+  },
+  "expected_failure_exit": 1,
+  "corrected_exit": 0,
+  "semantic_reproduction_equal": true,
+  "wheel_sha256": "95cf1dfc950c06e3b1fdf5140d77a68d7e643438b49a0531f7acfe1e4fab04cb",
+  "runtime_lock_sha256": "3276021222d5bfb7fade51875545055d0e4b1cae05d69f89ffa0f2c6e300d21a",
+  "report_hashes": {
+    "blocked": "d5951b1508ba14ddd1a56e82cf029cdb06d858e4b8bdd4d8e741244b06cd42f1",
+    "corrected": "aee3e0615a6f42b84210bec28db181ea8afb5cfdec843c4867dab572fe46746a",
+    "sensor-18": "239206764b4ffca03a761b40ab2e86c046764bce33f90ed496cd2b02122e95cf",
+    "sensor-18-repeat": "239206764b4ffca03a761b40ab2e86c046764bce33f90ed496cd2b02122e95cf"
+  },
+  "source_provenance": {
+    "schema_version": "1.0",
+    "input_sha256": "01cbadecbf4e8b4c4b5c8f0dcabc87495b6936c883e173d5efa703ee97601788",
+    "source_commit": "38041ae189c3c528f6b495688c665914af813cbe",
+    "source_dirty": true,
+    "lock_sha256": "474f9f07f49d00bbff2a96287f1934b3e93edc73be45013d9b89834daeb41ab9",
+    "oracle_sha256": "c69d6bec9731ce62f4219b7b58bef1cff802babff0f8c7830110cda44d691b5b",
+    "source_files": {
+      "src/fixtureforge/access.py": "eb0d486982926935ec4fce37ebf3b0869b72076786037342ae3747fab286ccfa",
+      "src/fixtureforge/api.py": "2d92e68682ea01990a5ceff33a0eb00850bcf0d53512ed54b3f9c044331b4b0c",
+      "src/fixtureforge/cli.py": "c67eafe846420bd83fd95135c1220c635fb2151ff3cbad95203ab2c9fa7958ed",
+      "src/fixtureforge/demo.py": "59df66ac5037334476baee824d094cb85264ae51ffc56e8af2fffd0c27accd5c",
+      "src/fixtureforge/files.py": "ceb5ee7498d6dfeff62c4ed6b20cdccbbfde2f1fb567d1160455d7f8d06d9048",
+      "src/fixtureforge/geometry.py": "6cbcff7568f384c5739d0d8e4ff3d290391e509c00586d8e5878e91d800e2c52",
+      "src/fixtureforge/inspection.py": "ab2a6d059394143bb81bcc8a319935a2a3fb394685208e13daf783a654935742",
+      "src/fixtureforge/models.py": "8682ebfe8e56794f93ebfe84ba3170e2c043158bd3054e11417093ba76881acf",
+      "src/fixtureforge/report.py": "7a6620e4ace65d493464fb7d684b7ed094b97aaeb91415b4071ee67d4b573d02",
+      "src/fixtureforge/worker.py": "cdf50f020f98710d0d2c5a909b50f4a34fe01f265a4c0baeb83df1accbc575c7",
+      "src/fixtureforge/__init__.py": "4f6c0219d96dec640f0508a015dff51dac8d7f36824c154c4b021f3e9967f568",
+      "src/fixtureforge/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    "python": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "versions": {
+      "fixtureforge": "0.1.0",
+      "cadquery": "2.8.0",
+      "cadquery-ocp": "7.9.3.1.1",
+      "pydantic": "2.13.5"
+    },
+    "workers": [
+      {
+        "action": "inspect",
+        "elapsed_seconds": 2.1996037999997498,
+        "peak_rss_bytes": 358797312,
+        "exit_code": 0,
+        "deadline_seconds": 120,
+        "memory_limit_mb": 2048
+      }
+    ],
+    "assembly_transform": "identity; mm; right handed X/Y/Z",
+    "geometry_hashes": {
+      "sweep-my-connector.step": "9ac2323d0334fde1bb925f25282edbb7d587994f630ddbb25b13ee8f823534a5"
+    },
+    "artifacts": {
+      "dimensions.svg": "7c76225e5b0c9e4e75227d3a73a73d902045c1b76a4ea0f4e2c56c8656e4bc96",
+      "input-access.json": "573e810c6bfc3bf9579ccbcb0e9dc18653c3fa7a2c431614ecc773115c9d8e57",
+      "inspect.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "inspection.json": "aee3e0615a6f42b84210bec28db181ea8afb5cfdec843c4867dab572fe46746a",
+      "report.html": "d7d97c194aece8bb6cc3cedb53443120c1051b835219e6c016dfa1ce779c4ea3",
+      "sweep-my-connector.step": "9ac2323d0334fde1bb925f25282edbb7d587994f630ddbb25b13ee8f823534a5"
+    },
+    "telemetry": "none",
+    "physical_tests": "not_performed"
+  }
+}
