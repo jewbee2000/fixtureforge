@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "project": "fixtureforge",
+  "status": "planned",
+  "requirements": [
+    {
+      "id": "FF-01",
+      "requirement": "FixtureSpec validates units, bounds, and coupled feasibility constraints before geometry construction.",
+      "acceptance": "Reject negative, nonfinite, out-of-range, and impossible pitch/diameter combinations with a specific explanation.",
+      "planned_test": "tests/acceptance/test_input_validation.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-02",
+      "requirement": "Every accepted configuration produces exactly two valid, positive-volume single solids.",
+      "acceptance": "Inspect each BREP and STEP reimport in a fresh process; reject null, merged, or self-invalid geometry.",
+      "planned_test": "tests/acceptance/test_solid_validity.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-03",
+      "requirement": "Bore, hole pitches, base thickness, and datums agree with requirements within 0.05 mm.",
+      "acceptance": "Independent section/edge/plane queries of reimported STEP measure dimensions.",
+      "planned_test": "tests/acceptance/test_dimensional_conformance.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-04",
+      "requirement": "Sensor and connector keepouts remain clear except for explicitly intended contact surfaces.",
+      "acceptance": "Boolean intersections and known collision mutations verify the rule and its exclusions.",
+      "planned_test": "tests/acceptance/test_keepout_clearance.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-05",
+      "requirement": "Fastener and tool-access envelopes remain usable in the prescribed assembly sequence.",
+      "acceptance": "Sampled assembly and tool sweeps identify intentional impossible-access configurations.",
+      "planned_test": "tests/acceptance/test_assembly_access.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-06",
+      "requirement": "Wall, base, and build-volume requirements are checked on generated geometry.",
+      "acceptance": "Deliberately thin or oversized parts fail even if their input metadata claims compliance.",
+      "planned_test": "tests/acceptance/test_manufacturing_geometry.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-07",
+      "requirement": "All six reference designs pass and all eight invalid cases are rejected for their intended cause.",
+      "acceptance": "Frozen inventory and explicit case-to-requirement mapping, not just counting nonzero exits.",
+      "planned_test": "tests/acceptance/test_case_inventory.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-08",
+      "requirement": "STEP and STL export preserve units and per-part identity; round trips remain within tolerance.",
+      "acceptance": "Reimport STEP, compare volume/bounds, and check STL watertightness and triangle orientation.",
+      "planned_test": "tests/acceptance/test_export_integrity.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-09",
+      "requirement": "Offline demonstration shows a rejected candidate and a corrected fixture without a model service.",
+      "acceptance": "Run without credentials and network; inspect actual generated CAD and reports.",
+      "planned_test": "tests/acceptance/test_offline_demo.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-10",
+      "requirement": "Any generated-code experiment uses bounded isolation and a read-only evaluator.",
+      "acceptance": "Timeout, path-escape, and evaluator-write probes fail; JSON-only generation cannot execute code.",
+      "planned_test": "tests/acceptance/test_generation_boundary.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-11",
+      "requirement": "Inspection output separates computed geometry from unmeasured physical fit and strength.",
+      "acceptance": "Report labels geometric checks, assumptions, and absent physical tests explicitly.",
+      "planned_test": "tests/acceptance/test_claim_boundaries.py",
+      "status": "not_implemented"
+    },
+    {
+      "id": "FF-12",
+      "requirement": "Fresh installation and deterministic inputs reproduce the required artifacts within numerical tolerance.",
+      "acceptance": "Record stable versions; compare geometry semantically rather than assuming STEP file bytes are invariant.",
+      "planned_test": "tests/acceptance/test_reproducibility.py",
+      "status": "not_implemented"
+    }
+  ]
+}
