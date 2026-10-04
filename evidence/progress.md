@@ -1,5 +1,31 @@
 # Progress
 
+## M1–M3 core complete — 2026-10-04
+
+Initial full suite: `python -m pytest -q --tb=short --junitxml=evidence/acceptance.xml`
+gave **55 passed in 87.51 seconds**. This includes six reference sizes, the eight
+intended defect causes, independent STEP surface queries and STL checks,
+external build123d input/repair, margin and occupancy checks, Boolean failure,
+input/worker bounds, and the offline demo with Python socket egress denied.
+This is an application-level egress guard, not OS firewall isolation; no native
+networking code is used by the application. The guard's attempted connection was
+also rejected. No model credentials are needed.
+
+`python -m fixtureforge demo --offline --output artifacts/replay`: exit 0, with
+actual rejected candidate (exit 1) and corrected fixture (exit 0). Both reports
+and all inputs are retained. `scripts/preserve_failures.py` retains seeded STEP
+mutations and summaries. Review tightened two mutations to avoid incidental
+defects: connector rib now remains attached; tool obstruction is outside the
+screw-head radius. Original results retained in seeded-failures-v1.json and
+artifacts/seeded-failures; revised defects in artifacts/seeded-failures-v2.
+
+Ruff and mypy exposed formatting/type issues, repaired without changing expected
+geometry. First type diagnostics retained in types-first.txt. `pip check` passed.
+Browser local-file preview was blocked by browser URL policy; no browser-layout
+claim is made. A static PNG is generated from actual STEP tessellation for safe
+visual inspection, without HTML execution. Next: cold consumer installation,
+semantic reproduction, performance measurements, final evidence and article.
+
 ## M0 complete — 2026-10-04
 
 `python scripts/baseline.py` executed CADCLAW 0.10.0, CadQuery 2.8.0 and

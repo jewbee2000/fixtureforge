@@ -41,3 +41,18 @@ is evaluated on the same independently authored solids before product code.
 
 Optional revision diff and model generation are deferred until the Must gates.
 No generated-code experiment will run without the required isolation.
+
+## M1 test correction and nut access
+
+The first external test compared 3.999999999999999 mm³ with exactly 4; the oracle
+now uses 1e-6 absolute numeric tolerance, still far tighter than the 0.05 mm
+dimension contract. The first impossible-pitch mutation used 30 mm, which failed
+the scalar 32 mm bound before the coupled rule; it now uses 40 mm to exercise
+the intended coupled infeasibility. Expected physical values and rejection
+requirements did not change. Original failures: evidence/m1-m2-first-check.txt.
+
+Nuts are outside the base rather than recessed into its minimum-thickness plate.
+The assembly contract therefore requires mounting standoffs with at least 3 mm
+underside clearance, and nut insertion before mounting. This keeps the base
+material at the declared thickness; flush mounting is not supported by this
+example. No claimed strength follows from either choice.

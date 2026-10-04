@@ -1,0 +1,16 @@
+F......F......                                                           [100%]
+================================== FAILURES ===================================
+______________________ test_external_bracket_and_repair _______________________
+tests\acceptance\test_external_step.py:15: in test_external_bracket_and_repair
+    assert failed['checks'][0]['pairs'][0]['overlap_mm3'] == 4
+E   assert 3.999999999999999 == 4
+___________________________ test_all_seeded_causes ____________________________
+tests\acceptance\test_case_inventory.py:49: in test_all_seeded_causes
+    with pytest.raises(ValueError, match='FF-01'):
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: 'FF-01'
+E     Actual message: '1 validation error for FixtureSpec\nmount_pitch_y_mm\n  Input should be greater than or equal to 32 [type=greater_than_equal, input_value=30, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal'
+=========================== short test summary info ===========================
+FAILED tests/acceptance/test_external_step.py::test_external_bracket_and_repair
+FAILED tests/acceptance/test_case_inventory.py::test_all_seeded_causes - Asse...
+2 failed, 12 passed in 48.08s

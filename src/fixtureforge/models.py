@@ -106,7 +106,7 @@ class AccessSpec(Contract):
     units: Literal['mm']
     parts: list[PartSpec] = Field(min_length=1, max_length=20)
     paths: list[AccessPath] = Field(min_length=1, max_length=40)
-    datums: dict[str, Vector] = Field(default_factory=lambda: {'origin': (0, 0, 0)}, max_length=12)
+    datums: dict[str, Vector] = Field(default_factory=lambda: {'origin': (0.0, 0.0, 0.0)}, max_length=12)
     assumptions: list[str] = Field(default_factory=list, max_length=20)
 
     @model_validator(mode='after')

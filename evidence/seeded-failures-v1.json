@@ -1,0 +1,78 @@
+{
+  "below_minimum_wall": {
+    "status": "fail",
+    "failed": [
+      "clamp-wall"
+    ],
+    "requirements": [
+      "FF-06"
+    ]
+  },
+  "connector_collision": {
+    "status": "fail",
+    "failed": [
+      "solid-count",
+      "sensor",
+      "connector"
+    ],
+    "requirements": [
+      "FF-02",
+      "FF-04"
+    ]
+  },
+  "screw_head_collision": {
+    "status": "fail",
+    "failed": [
+      "shaft-1",
+      "head-1",
+      "tool-1"
+    ],
+    "requirements": [
+      "FF-05"
+    ]
+  },
+  "inaccessible_tool_path": {
+    "status": "fail",
+    "failed": [
+      "head-1",
+      "tool-1"
+    ],
+    "requirements": [
+      "FF-05"
+    ]
+  },
+  "merged_halves": {
+    "status": "fail",
+    "failed": [
+      "separate-halves"
+    ],
+    "requirements": [
+      "FF-02"
+    ]
+  },
+  "empty_solid": {
+    "status": "fail",
+    "failed": [
+      "solid-count"
+    ],
+    "requirements": [
+      "FF-02"
+    ]
+  },
+  "exceeds_build_volume": {
+    "status": "fail",
+    "failed": [
+      "base-build-volume"
+    ],
+    "requirements": [
+      "FF-06"
+    ]
+  },
+  "impossible_pitch": {
+    "status": "rejected_input",
+    "requirements": [
+      "FF-01"
+    ],
+    "mount_pitch_y_mm": 40
+  }
+}

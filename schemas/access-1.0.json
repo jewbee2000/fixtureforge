@@ -1,0 +1,388 @@
+{
+  "$defs": {
+    "AccessPath": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "requirement": {
+          "default": "FF-15",
+          "enum": [
+            "FF-04",
+            "FF-05",
+            "FF-14",
+            "FF-15"
+          ],
+          "title": "Requirement",
+          "type": "string"
+        },
+        "envelope": {
+          "$ref": "#/$defs/Envelope"
+        },
+        "start_mm": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            }
+          ],
+          "title": "Start Mm",
+          "type": "array"
+        },
+        "end_mm": {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            }
+          ],
+          "title": "End Mm",
+          "type": "array"
+        },
+        "motion": {
+          "const": "straight",
+          "default": "straight",
+          "title": "Motion",
+          "type": "string"
+        },
+        "orientation_deg": {
+          "default": [
+            0,
+            0,
+            0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "const": 0,
+              "type": "integer"
+            },
+            {
+              "const": 0,
+              "type": "integer"
+            },
+            {
+              "const": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "Orientation Deg",
+          "type": "array"
+        },
+        "end_orientation_deg": {
+          "default": [
+            0,
+            0,
+            0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "const": 0,
+              "type": "integer"
+            },
+            {
+              "const": 0,
+              "type": "integer"
+            },
+            {
+              "const": 0,
+              "type": "integer"
+            }
+          ],
+          "title": "End Orientation Deg",
+          "type": "array"
+        },
+        "occupied": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Occupied",
+          "type": "array"
+        },
+        "intended_end_contacts": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Intended End Contacts",
+          "type": "array"
+        },
+        "margin_mm": {
+          "default": 0,
+          "maximum": 20,
+          "minimum": 0,
+          "title": "Margin Mm",
+          "type": "number"
+        },
+        "purpose": {
+          "default": "Explicit nominal access envelope",
+          "maxLength": 500,
+          "title": "Purpose",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "envelope",
+        "start_mm",
+        "end_mm",
+        "occupied"
+      ],
+      "title": "AccessPath",
+      "type": "object"
+    },
+    "Envelope": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "box",
+            "cylinder"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "size_mm": {
+          "anyOf": [
+            {
+              "maxItems": 3,
+              "minItems": 3,
+              "prefixItems": [
+                {
+                  "exclusiveMinimum": 0,
+                  "maximum": 500,
+                  "type": "number"
+                },
+                {
+                  "exclusiveMinimum": 0,
+                  "maximum": 500,
+                  "type": "number"
+                },
+                {
+                  "exclusiveMinimum": 0,
+                  "maximum": 500,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Size Mm"
+        },
+        "radius_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 500,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Radius Mm"
+        },
+        "height_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 500,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height Mm"
+        },
+        "axis": {
+          "default": "z",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "title": "Axis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "Envelope",
+      "type": "object"
+    },
+    "PartSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "file": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "File",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "translation_mm": {
+          "default": [
+            0,
+            0,
+            0
+          ],
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            },
+            {
+              "maximum": 1000,
+              "minimum": -1000,
+              "type": "number"
+            }
+          ],
+          "title": "Translation Mm",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "file",
+        "sha256"
+      ],
+      "title": "PartSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "units": {
+      "const": "mm",
+      "title": "Units",
+      "type": "string"
+    },
+    "parts": {
+      "items": {
+        "$ref": "#/$defs/PartSpec"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Parts",
+      "type": "array"
+    },
+    "paths": {
+      "items": {
+        "$ref": "#/$defs/AccessPath"
+      },
+      "maxItems": 40,
+      "minItems": 1,
+      "title": "Paths",
+      "type": "array"
+    },
+    "datums": {
+      "additionalProperties": {
+        "maxItems": 3,
+        "minItems": 3,
+        "prefixItems": [
+          {
+            "maximum": 1000,
+            "minimum": -1000,
+            "type": "number"
+          },
+          {
+            "maximum": 1000,
+            "minimum": -1000,
+            "type": "number"
+          },
+          {
+            "maximum": 1000,
+            "minimum": -1000,
+            "type": "number"
+          }
+        ],
+        "type": "array"
+      },
+      "maxProperties": 12,
+      "title": "Datums",
+      "type": "object"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 20,
+      "title": "Assumptions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "units",
+    "parts",
+    "paths"
+  ],
+  "title": "AccessSpec",
+  "type": "object"
+}

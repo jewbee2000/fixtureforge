@@ -1,0 +1,124 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "units": {
+      "const": "mm",
+      "default": "mm",
+      "title": "Units",
+      "type": "string"
+    },
+    "sensor_diameter_mm": {
+      "default": 24,
+      "maximum": 40,
+      "minimum": 12,
+      "title": "Sensor Diameter Mm",
+      "type": "number"
+    },
+    "sensor_length_mm": {
+      "default": 40,
+      "maximum": 80,
+      "minimum": 25,
+      "title": "Sensor Length Mm",
+      "type": "number"
+    },
+    "clearance_mm": {
+      "default": 0.4,
+      "maximum": 1,
+      "minimum": 0.2,
+      "title": "Clearance Mm",
+      "type": "number"
+    },
+    "wall_mm": {
+      "default": 3,
+      "maximum": 6,
+      "minimum": 2.4,
+      "title": "Wall Mm",
+      "type": "number"
+    },
+    "base_mm": {
+      "default": 5,
+      "maximum": 12,
+      "minimum": 5,
+      "title": "Base Mm",
+      "type": "number"
+    },
+    "mount_pitch_x_mm": {
+      "default": 40,
+      "maximum": 160,
+      "minimum": 32,
+      "title": "Mount Pitch X Mm",
+      "type": "number"
+    },
+    "mount_pitch_y_mm": {
+      "default": 64,
+      "maximum": 160,
+      "minimum": 32,
+      "title": "Mount Pitch Y Mm",
+      "type": "number"
+    },
+    "connector_length_mm": {
+      "default": 12,
+      "maximum": 40,
+      "minimum": 1,
+      "title": "Connector Length Mm",
+      "type": "number"
+    },
+    "connector_width_mm": {
+      "default": 12,
+      "maximum": 40,
+      "minimum": 1,
+      "title": "Connector Width Mm",
+      "type": "number"
+    },
+    "connector_height_mm": {
+      "default": 12,
+      "maximum": 40,
+      "minimum": 1,
+      "title": "Connector Height Mm",
+      "type": "number"
+    },
+    "cable_exit_mm": {
+      "default": 8,
+      "maximum": 40,
+      "minimum": 0,
+      "title": "Cable Exit Mm",
+      "type": "number"
+    },
+    "connector_end": {
+      "default": "+x",
+      "enum": [
+        "+x",
+        "-x"
+      ],
+      "title": "Connector End",
+      "type": "string"
+    },
+    "manufacturing_profile": {
+      "const": "fdm-0.4-0.2-v1",
+      "default": "fdm-0.4-0.2-v1",
+      "title": "Manufacturing Profile",
+      "type": "string"
+    },
+    "assembly_direction": {
+      "const": "+z",
+      "default": "+z",
+      "title": "Assembly Direction",
+      "type": "string"
+    },
+    "assumption_source": {
+      "default": "Synthetic reference; SPEC.md",
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Assumption Source",
+      "type": "string"
+    }
+  },
+  "title": "FixtureSpec",
+  "type": "object"
+}

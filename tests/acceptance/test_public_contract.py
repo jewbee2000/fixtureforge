@@ -28,8 +28,9 @@ def test_cli_invalid_is_two(tmp_path):
 
 
 def test_result_schema(built):
-    import jsonschema
     from pathlib import Path
+
+    import jsonschema
     report = json.loads((built / 'inspection.json').read_text())
     schema = json.loads(Path('schemas/result-1.0.json').read_text())
     jsonschema.validate(report, schema)

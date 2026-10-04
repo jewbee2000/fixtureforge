@@ -26,3 +26,14 @@ def test_exact_clearance():
     result = evaluate_path(path, {'obstacle': obstacle})
     assert result['status'] == 'pass'
     assert result['nominal_clearance_mm'] == pytest.approx(3)
+
+
+def test_diagonal_is_labelled_conservative():
+    # Away from the true diagonal, but inside its enclosing rectangular sweep.
+    obstacle = cq.Workplane('XY').box(1, 1, 1).translate((0, 8, 0)).val()
+    path = AccessPath(id='diagonal', envelope={'kind': 'box', 'size_mm': [2, 2, 2]},
+                      start_mm=[0, 0, 0], end_mm=[10, 10, 0], occupied=['part'])
+    result = evaluate_path(path, {'part': obstacle})
+    assert result['status'] == 'fail'
+    assert result['method'] == 'conservative_bounding_box'
+    assert result['conservative_inflation'] is True

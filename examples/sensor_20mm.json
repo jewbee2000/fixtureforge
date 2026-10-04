@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "units": "mm",
+  "sensor_diameter_mm": 20,
+  "sensor_length_mm": 35.0,
+  "mount_pitch_x_mm": 38.666666666666664,
+  "mount_pitch_y_mm": 60,
+  "connector_length_mm": 13.0,
+  "connector_width_mm": 10.5,
+  "connector_height_mm": 10.5
+}

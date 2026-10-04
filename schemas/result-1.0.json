@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fixtureforge:result:1.0",
+  "type": "object",
+  "required": ["schema_version", "status", "checks", "claim_boundary", "physical_tests"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "status": {"enum": ["pass", "fail", "inconclusive"]},
+    "claim_boundary": {"type": "string", "minLength": 1},
+    "physical_tests": {"const": "not_performed"},
+    "checks": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "requirement", "status", "message"],
+        "properties": {
+          "id": {"type": "string"},
+          "requirement": {"type": "string", "pattern": "^FF-[0-9]{2}$"},
+          "status": {"enum": ["pass", "fail", "inconclusive", "not_applicable"]},
+          "message": {"type": "string"}
+        }
+      }
+    }
+  }
+}

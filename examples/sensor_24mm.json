@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "units": "mm",
+  "sensor_diameter_mm": 24,
+  "sensor_length_mm": 40,
+  "mount_pitch_x_mm": 40,
+  "mount_pitch_y_mm": 64,
+  "assumption_source": "MIT-licensed synthetic example. See SPEC.md; no manufacturer data or physical measurements."
+}
