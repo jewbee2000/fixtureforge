@@ -67,7 +67,7 @@ def inspect_fixture(parts, spec):
                     downward.append({'center_mm': face.Center().toTuple(), 'area_mm2': face.Area()})
         measured[name] = {'bounds_mm': bounds(shape), 'volume_mm3': shape.Volume(),
                           'downward_faces': downward,
-                          'bed_face': 'Z=0 mounting face' if name == 'base' else 'split face (rotate 180 degrees about X)',
+                          'bed_face': 'Z=0 mounting face' if name == 'base' else 'split face; translate its minimum Z to 0 without rotation',
                           'overhang_warning': 'Downward faces and curved bore need slicer review in the stated orientation.'}
         if name == 'base':
             holes = [c for c in cylinders if abs(c['axis'][2]) > 0.999 and abs(c['origin'][0]) > 1]

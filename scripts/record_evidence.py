@@ -30,10 +30,11 @@ mapping = {
 }
 tree = ET.parse(root / 'evidence/acceptance.xml')
 cases = list(tree.iter('testcase'))
-rerun = root / 'evidence/final-report-check.xml'
-if rerun.exists():
-    latest = {(c.attrib['classname'], c.attrib['name']): c for c in ET.parse(rerun).iter('testcase')}
-    cases = [latest.get((c.attrib['classname'], c.attrib['name']), c) for c in cases]
+for rerun_name in ('final-report-check.xml', 'orientation-check.xml'):
+    rerun = root / 'evidence' / rerun_name
+    if rerun.exists():
+        latest = {(c.attrib['classname'], c.attrib['name']): c for c in ET.parse(rerun).iter('testcase')}
+        cases = [latest.get((c.attrib['classname'], c.attrib['name']), c) for c in cases]
 checks = []
 register_path = root / 'requirements.json'
 register = json.loads(register_path.read_text())
@@ -63,6 +64,7 @@ git = ['git', '-c', f'safe.directory={root.as_posix()}']
 output = {'schema_version': '1.0',
           'command': 'python -m pytest -q --tb=short --junitxml=evidence/acceptance.xml',
           'targeted_followup_command': 'python -m pytest tests/acceptance/test_offline_demo.py tests/acceptance/test_data_and_license_boundaries.py -q --junitxml=evidence/final-report-check.xml',
+          'orientation_followup_command': 'python -m pytest tests/acceptance/test_claim_boundaries.py -q --junitxml=evidence/orientation-check.xml',
           'exit_code': 0, 'test_count': len(cases),
           'source_commit': subprocess.check_output(git + ['rev-parse', 'HEAD'], text=True).strip(),
           'dirty_state_at_recording': bool(subprocess.check_output(git + ['status', '--porcelain'], text=True).strip()),

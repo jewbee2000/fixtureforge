@@ -2,9 +2,10 @@
   "schema_version": "1.0",
   "command": "python -m pytest -q --tb=short --junitxml=evidence/acceptance.xml",
   "targeted_followup_command": "python -m pytest tests/acceptance/test_offline_demo.py tests/acceptance/test_data_and_license_boundaries.py -q --junitxml=evidence/final-report-check.xml",
+  "orientation_followup_command": "python -m pytest tests/acceptance/test_claim_boundaries.py -q --junitxml=evidence/orientation-check.xml",
   "exit_code": 0,
   "test_count": 61,
-  "source_commit": "0486a2248abeb38d7ac53290b60d596fefee726a",
+  "source_commit": "a52fd6911145af2813be1b4be810a987a02b9de5",
   "dirty_state_at_recording": true,
   "lock_sha256": "474f9f07f49d00bbff2a96287f1934b3e93edc73be45013d9b89834daeb41ab9",
   "oracle_sha256": "c69d6bec9731ce62f4219b7b58bef1cff802babff0f8c7830110cda44d691b5b",
@@ -15,7 +16,7 @@
     "tests/acceptance/test_boolean_failure.py": "c6a55960ca72aa5697de24af1727ab80f4fbf2d498dc217b5565389d8967350f",
     "tests/acceptance/test_boundary_properties.py": "50ce5357af1130065b61729676a7b2757bbbfa4c2c525731f311e8d264ca0ee3",
     "tests/acceptance/test_case_inventory.py": "5fc91d831b0f5992c26328814e370c53f154f570002c3752ed1ba3a7f6e6779e",
-    "tests/acceptance/test_claim_boundaries.py": "8895e9e86ccf09264cade49abf990bac3cd46b05b7ec6851871d179a232bdf70",
+    "tests/acceptance/test_claim_boundaries.py": "0d5676900609e07cfd57ad92bfc887f95bdb3f045447d2ca8294a537dcfa2714",
     "tests/acceptance/test_consumer_walkthrough.py": "ccff0a5eaa380b2fec227648759b95521ae7efc28b1d276242aa6f668d2e29ff",
     "tests/acceptance/test_data_and_license_boundaries.py": "8b5899135bed5277e6f0335b91e1fe3c85e4d859a49d9ee58e9591e70bbb1e9f",
     "tests/acceptance/test_dimensional_conformance.py": "8919922867d134e2f1cc330bd2ddc7226366e24e0e68ae71bdadc332c24a0c0b",
@@ -46,6 +47,7 @@
     "consumer.json": "e00249b4f5f4ffde5b163ea83dfaa159cfcc745d8a5e09ccbfd75b25fb4deb1e",
     "dependencies.txt": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
     "dependency-licenses.json": "e4fb29ef09efc3f356fa8da655ea338994ae7a74bdf0a3ca518eb3200722a7ab",
+    "final-demo.json": "42fa0a769d86cc4f97b1af5b2de53984a43a747eb78c2546823d0f9ad9d9ad5d",
     "final-report-check.txt": "bf08c04def0a7cd3ab1a7379141ab9fae185f718b6bc7aefe91ed2a469dbd4ee",
     "final-report-check.xml": "4adb6e1157da3791b762d22d1b58f3c719ef69834ffb822a939c24c812255d83",
     "fixture-24.png": "df30434e580cb5b05afcb5068cd70b8de19243dbc7783a16b888bddbc5fd614a",
@@ -53,6 +55,8 @@
     "m1-m2-first-check.txt": "0fbc9a9dd71023f574ff32a383f5ff92545584c02be64dfa6b721c13e8d08c7c",
     "m2-check.txt": "88aa0a8469e1781b1f989da38048006dbad392fc29631832c8dd7a7b35ed15b4",
     "oracle-before-implementation.txt": "5410bacedf0cc5bb1b5d81b7f3913af46cf0db7035a7ccac1964bfa421daad37",
+    "orientation-check.txt": "7886984d1ef10192ab637522861a4d5e11ecec5d8fd5cf2c638c1492ddeae686",
+    "orientation-check.xml": "429a174c66a0e889d52c5b221ae00ff8a5a712f115225781da9c66e4f9cbcfc0",
     "performance.json": "1ad7022b0a2a2832cd4351ebe8b37f380931f00ba135566c6230f04f35ea962d",
     "README.md": "04d7a599d6c6a2e4817c420d58f600d826decdf0a9505098085b5fb33eaa9983",
     "replay.png": "850d35542d7e616094cf935a65c6d15b1a9e53aba3459a690be158eb927bad76",
@@ -61,7 +65,8 @@
     "site-build.txt": "46ca947778d4898fcb2d64c4ad5df0e5edb9f41db608be4aa174a5d97488a95b",
     "site-preview-build.txt": "e49c80e21c26af3a610f5706f9318eafc93de29900c550ebf93716fd18891160",
     "types-first.txt": "eb9c870d7aabc47d24b0818eee5d3d3392cdec8a9fc87cf9581e6ef2b081ffe4",
-    "types.txt": "99774ae94d9c061d2ee8a3c00a79bb1c6dfd2b0998f7cb389be50e19a0dc7d15"
+    "types.txt": "99774ae94d9c061d2ee8a3c00a79bb1c6dfd2b0998f7cb389be50e19a0dc7d15",
+    "wheel-refresh.json": "e479dc547141b8b1464e4829d31828305322ca73e963c788bec334dfd87b71b3"
   },
   "requirements": [
     {

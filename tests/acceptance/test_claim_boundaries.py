@@ -8,3 +8,5 @@ def test_unmeasured_claims_are_explicit(built):
     assert 'not been measured' in report['claim_boundary']
     assert any(c['id'] == 'physical-validation' and c['status'] == 'not_applicable'
                for c in report['checks'])
+    measured = next(c for c in report['checks'] if c['id'] == 'measured-geometry')
+    assert 'without rotation' in measured['parts']['clamp']['bed_face']

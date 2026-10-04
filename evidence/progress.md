@@ -10,6 +10,12 @@ values are unchanged. Targeted rerun: 8 passed; lint and types passed. A fresh
 clean-commit demo follows. The requirement map overlays those latest executed
 cases on the 61-case full run, without treating repeated cases as new coverage.
 
+Review also corrected the upper clamp's bed-orientation label: its split face
+is already its minimum-Z face, so printing orientation translates that plane to
+Z=0 without a 180-degree rotation. Geometry and clearance verdicts are unchanged;
+the claim-boundary test now checks the corrected label. The earlier wording is
+visible in preserved run artifacts and must not guide physical printing.
+
 ## M4 completed — 2026-10-04
 
 Final full acceptance command `python -m pytest -q --tb=short
