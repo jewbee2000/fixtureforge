@@ -16,7 +16,8 @@ trial has been performed.
 * seeded-failures*.json preserve defect outcomes; raw CAD and complete reports
   are in ignored artifacts/seeded-failures and artifacts/seeded-failures-v2.
 * fixture-24.png and replay.png were rendered from actual reimported STEP and
-  visually inspected. Browser HTML layout remains unverified.
+  visually inspected. The later [publication audit](publication-audit/README.md)
+  contains browser screenshots, a new acceptance run and a separate benchmark.
 * The website normal and draft-preview build logs are retained. The normal
   build excludes the article; its front matter remains published: false.
 

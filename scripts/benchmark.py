@@ -1,4 +1,5 @@
-"""Three measured CLI-equivalent runs; no universal performance claim."""
+"""Three measured CLI-equivalent runs in a new directory; preserve older evidence."""
+import argparse
 import json
 import subprocess
 import sys
@@ -6,13 +7,26 @@ import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output', required=True, type=Path,
+                    help='New directory for all three builds and performance.json')
+args = parser.parse_args()
+output_directory = args.output.resolve()
+try:
+    output_directory.mkdir(parents=True, exist_ok=False)
+except OSError as error:
+    parser.error(f'Choose a new writable output directory: {error}')
 records = []
 for index in range(3):
-    out = root / f'artifacts/performance-{index}'
+    out = output_directory / f'build-{index}'
     started = time.perf_counter()
     result = subprocess.run([sys.executable, '-m', 'fixtureforge', 'build',
                              str(root / 'examples/sensor_24mm.json'), '--output', str(out)],
                             capture_output=True, text=True, timeout=125)
+    if result.returncode != 0:
+        (output_directory / f'failed-build-{index}.log').write_text(
+            result.stdout + result.stderr, encoding='utf-8')
+        raise RuntimeError(f'Build {index} failed with exit {result.returncode}; see retained log')
     manifest = json.loads((out / 'manifest.json').read_text())
     records.append({'command': result.args, 'exit_code': result.returncode,
                     'wall_seconds': time.perf_counter() - started,
@@ -23,9 +37,9 @@ for index in range(3):
     assert result.returncode == 0
     assert records[-1]['wall_seconds'] < 60
     assert records[-1]['peak_worker_rss_bytes'] < 2 * 1024**3
-output = {'machine': 'Dell XPS 15 9510; Intel i9-11900H; 8 cores/16 threads; 64 GiB; Windows 11 x64',
+output = {'machine': manifest['platform'], 'python': manifest['python'],
           'method': '3 serial fresh-interpreter 24 mm builds including fresh STEP verification; worker RSS sampled every 20 ms',
           'target_seconds': 60, 'deadline_seconds': 120, 'memory_limit_mb': 2048,
           'runs': records}
-Path('evidence/performance.json').write_text(json.dumps(output, indent=2) + '\n')
+(output_directory / 'performance.json').write_text(json.dumps(output, indent=2) + '\n')
 print(json.dumps([{k: r[k] for k in ('exit_code', 'wall_seconds', 'peak_worker_rss_bytes')} for r in records]))

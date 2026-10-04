@@ -1,0 +1,66 @@
+{
+  "audit_date": "2026-10-04",
+  "starting_commit": "e6dc788",
+  "core_source_changed": false,
+  "pytest": {
+    "command": "python -m pytest -q --junitxml=artifacts/article-audit-acceptance.xml",
+    "exit_code": 0,
+    "passed": 61,
+    "seconds": 89.58,
+    "retained_evidence_assertions": 4
+  },
+  "checks": [
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "scripts",
+        "tests"
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src/fixtureforge"
+      ],
+      "exit_code": 0,
+      "output": "Success: no issues found in 12 source files\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "No broken requirements found.\n"
+    }
+  ],
+  "browser": {
+    "surface": "Codex in-app browser",
+    "reports": [
+      "rejected/report.html",
+      "corrected/report.html"
+    ],
+    "mobile_width_px": 390,
+    "local_link_targets_checked": 10,
+    "no_mobile_horizontal_overflow_observed": true
+  },
+  "artifacts_sha256": {
+    "acceptance.xml": "7098482974b26a835ba0c7c8df477ee187e241e8e8e63bb9ca0cb35828b7ebd1",
+    "corrected-report-mobile.jpg": "fd06bbba07ae2e1cc659ee47e21df228cbe3c86c6b1bcc7c797585c45de00eac",
+    "corrected-tool-desktop.jpg": "0d8a0f13e2fbc1d1a31d30d3b48c85728196deb77a2e3ffce4f918f506282fdc",
+    "performance.json": "408aa64755393a6cc1b9d515a9c29a518db86e8583fb377bb1edcdd85c20a690",
+    "README.md": "681c761d5176fb6d562bfd57d19328a168701560948c709e54f0e4cd6ab22ec5",
+    "rejected-report-desktop.jpg": "e7402aeefdf620ac0e8a2c05065f4fb5a5b741495ae7f5f6ca0f9d1dc45e1d2d",
+    "rejected-report-mobile.jpg": "2d1a0446acc56bd84c7cacee1f73f818b8fe2d21e937f7439eb82606ef63bcde"
+  }
+}

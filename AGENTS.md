@@ -12,3 +12,9 @@
 - Commit coherent milestones and update evidence/progress.md with commands, results, and next steps.
 - Remote actions require Walter's explicit authorization. Initial publication of this project to GitHub was authorized on 2026-10-04; blog publication and deployment remain unauthorized. Local commits are authorized.
 - Keep the blog unpublished and grounded in actual work. Do not invent autobiographical details.
+
+Current authorization update: on 2026-10-04 Walter requested a consolidated
+article, a full project audit, necessary cleanup, GitHub pushes and publication
+to his personal website. That explicit scope supersedes the earlier publication
+restriction for this audit. Keep original experiment evidence separate from
+audit-phase changes and do not invent measurements or personal experiences.

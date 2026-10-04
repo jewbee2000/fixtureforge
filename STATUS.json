@@ -11,7 +11,8 @@
   "requirements_revision": "2026-10-04",
   "usefulness_validation": "executed_baseline_and_clean_agent_consumer; independent_practitioner_feedback_unverified",
   "acceptance_cases_passed": 61,
-  "html_browser_layout_verified": false,
+  "html_browser_layout_verified": true,
+  "html_browser_layout_scope": "publication audit: retained rejected/corrected replay reports, Codex in-app browser, desktop and 390 px mobile",
   "offline_boundary": "Python socket egress denied; not OS firewall isolation",
   "applicable_must_requirements": "passed; FF-10 not applicable because generated-code execution is disabled"
 }

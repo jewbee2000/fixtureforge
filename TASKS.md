@@ -1,6 +1,6 @@
 # Implementation tasks
 
-Implementation is in progress. Check off only after recording executed evidence.
+The deterministic release is complete. Check off only after recording executed evidence.
 
 - [x] M0 — Compare CADCLAW and prove the CAD stack. Executed baseline and input checks; see docs/BASELINE.md and evidence/baseline.json.
 - [x] M1 — Imported build123d bracket and 24 mm fixture pass independent STEP dimensions and STL checks.
@@ -16,7 +16,7 @@ See IMPLEMENTATION_PLAN.md and docs/REQUIREMENTS.md.
 ## Proposed next iteration
 
 - [ ] Obtain one independent practitioner walkthrough on their own assembly.
-- [ ] Verify passing/failing HTML reports at desktop and mobile widths.
+- [x] Verify retained passing/failing replay reports at desktop and mobile widths; see evidence/publication-audit/README.md. Other assemblies and browsers remain unverified.
 - [ ] Add fresh Windows/Python 3.12 CI using the existing local checks.
 - [ ] Select FF-17 revision comparison if the consumer workflow supports it.
 - [ ] Optionally print and measure one reference fixture using existing equipment.

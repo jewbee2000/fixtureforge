@@ -20,6 +20,12 @@ contact anyone automatically or put proprietary parts in the public repository.
 
 ## 2. Close the report presentation gap
 
+Publication-audit update: the retained rejected/corrected replay reports now
+have desktop and 390 px mobile browser inspection evidence in
+[publication-audit](../evidence/publication-audit/README.md). No presentation
+defect was found in those views. Broader assemblies/browser coverage remains
+the scope of the following proposed work.
+
 Review generated reports in a normal browser at desktop and mobile widths.
 Check the rejected/corrected navigation, pair labels, path diagrams, units,
 datums, clearance values and conservative-sweep explanation. Keep screenshots

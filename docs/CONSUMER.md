@@ -52,3 +52,9 @@ measures only tiny synthetic geometry after imports. The workloads and timing
 boundaries differ, so these numbers are not a speed comparison. The added report
 and process work is worthwhile only if the explicit reusable contracts help the
 engineer's workflow. No independent engineer has tested that hypothesis yet.
+
+To repeat the benchmark without replacing that historical evidence, run
+`python scripts/benchmark.py --output artifacts/my-benchmark`. Use a new
+directory each time; the three build directories and `performance.json` remain
+together. The publication audit made this output path explicit after finding
+that the original script hardcoded already-used directories.

@@ -1,5 +1,30 @@
 # Progress
 
+## 2026-10-04 publication audit (separate from the original implementation)
+
+Walter requested a consolidated article, a project audit, necessary cleanup,
+GitHub pushes and website publication. Starting at clean commit `e6dc788`, the
+audit read the application, tests, scripts, contracts, evidence and implementation
+chat, then reran the full suite: **61 passed in 89.58 seconds**. Ruff, mypy (12
+files), and pip check passed. Four test cases inspect retained historical evidence;
+this pytest run is not a new consumer installation or full baseline campaign.
+
+Browser preview over localhost now worked. Retained replay reports were inspected
+at desktop and 390 px mobile widths, with no horizontal overflow observed and
+the SVG geometry visible. The root replay navigation reached the retained failure.
+Screenshots and exact scope are in `evidence/publication-audit/`. Original browser
+limitations and measurements below are retained as historical observations.
+
+The audit found that `scripts/benchmark.py` reused hardcoded nonempty output
+directories and reported a hardcoded hardware identity. It now requires a new
+`--output` directory, keeps each run's artifacts/performance.json together, reads
+platform information from the run, and retains failed-command output. Original
+performance evidence is unchanged. The revised script completed three builds in
+7.865, 8.338 and 8.521 seconds, with sampled worker RSS 412,389,376, 412,381,184
+and 412,893,184 bytes. Reusing the output directory was rejected. No core geometry,
+oracle or acceptance-test source changed. The published package still has no
+physical/practitioner validation or live model trial.
+
 ## 2026-10-04 GitHub publication authorization
 
 Walter explicitly authorized pushing this project to GitHub and explicitly

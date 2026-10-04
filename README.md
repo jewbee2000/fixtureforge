@@ -50,8 +50,10 @@ Normal commands use 0/pass, 1/geometric violation and 2/incomplete or invalid.
 Run `python -m pytest -q`, `python -m ruff check src scripts tests` and
 `python -m mypy src/fixtureforge` in the environment. The repository retains
 executed consumer and performance evidence used by the acceptance tests.
-To regenerate those runs, follow docs/CONSUMER.md and scripts/benchmark.py with
-fresh output directories. Full requirement mapping: [evidence](evidence/requirements-evidence.json).
+To regenerate those runs, follow docs/CONSUMER.md and run
+`python scripts/benchmark.py --output artifacts/my-benchmark` with a new output
+directory. It writes `performance.json` alongside the three builds and preserves
+the historical evidence. Full requirement mapping: [evidence](evidence/requirements-evidence.json).
 
 The software checks six reference clamp sizes, independent STEP cylinder/plane
 dimensions, STL integrity, eight seeded defect causes and an external bracket.
@@ -69,8 +71,9 @@ The clamp needs nuts inserted before mounting and at least 3 mm underside space
 on standoffs. It has not been printed, loaded, or shown to grip a real sensor.
 No FEA, slicer, machining, arbitrary motion planning, flexible cable routing,
 model API or generic CAD validation platform is included. Revision report diff
-and live model proposals are deferred. Browser rendering of the HTML report
-remains unverified in this environment; static CAD images were inspected.
+and live model proposals are deferred. A later publication audit verified the
+retained replay reports in a browser at desktop and 390 px mobile widths;
+[screenshots and scope](evidence/publication-audit/README.md) are retained.
 
 The independent consumer was run by the same coding agent in a fresh environment;
 external practitioner adoption remains unverified. [Licensing and data handling](docs/LICENSING.md).
