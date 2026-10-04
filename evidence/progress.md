@@ -17,8 +17,12 @@ publication step, so the already executed application checks were not repeated.
 Documentation now records the publication boundary and proposed next steps.
 The website checkout and its article were not edited or pushed during this step.
 
-Next: push `main`, verify the remote HEAD matches the local commit, and record
-the result. Proposed next development work is in docs/NEXT_STEPS.md.
+`git push -u origin main` completed with exit 0. `git ls-remote origin
+refs/heads/main` matched local commit `318f3ce9ecd4aaec4e6e816ff364130e775ff0f2`.
+An unauthenticated GitHub API read confirmed the repository is public, under
+the expected owner, and on `main`. See publication.json. The evidence-only
+follow-up records this result and is also pushed. Proposed next development
+work is in docs/NEXT_STEPS.md.
 
 ## Final clean-source demonstration and wheel verification
 

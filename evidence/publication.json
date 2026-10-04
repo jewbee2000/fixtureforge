@@ -1,0 +1,12 @@
+{
+  "repository_url": "https://github.com/jewbee2000/fixtureforge",
+  "visibility": "public",
+  "branch": "main",
+  "verified_commit": "318f3ce9ecd4aaec4e6e816ff364130e775ff0f2",
+  "local_remote_heads_match": true,
+  "push_command": "git push -u origin main",
+  "push_exit_code": 0,
+  "blog_repository_pushed": false,
+  "application_code_changed": false,
+  "verification": "git ls-remote plus unauthenticated GitHub repository API read"
+}
