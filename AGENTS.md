@@ -10,5 +10,5 @@
 - Do not spawn parallel agents unless Walter requests them.
 - Verify changes with relevant checks and inspect the output artifacts; do not label unrun checks as passed.
 - Commit coherent milestones and update evidence/progress.md with commands, results, and next steps.
-- Do not push, deploy, publish, or create remote commits. Local commits are authorized.
+- Remote actions require Walter's explicit authorization. Initial publication of this project to GitHub was authorized on 2026-10-04; blog publication and deployment remain unauthorized. Local commits are authorized.
 - Keep the blog unpublished and grounded in actual work. Do not invent autobiographical details.

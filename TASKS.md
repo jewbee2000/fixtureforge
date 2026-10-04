@@ -12,3 +12,14 @@ Implementation is in progress. Check off only after recording executed evidence.
 - [x] Complete the independent consumer walkthrough and compare its cost with the baseline. See docs/CONSUMER.md; this was agent-executed, not practitioner adoption.
 
 See IMPLEMENTATION_PLAN.md and docs/REQUIREMENTS.md.
+
+## Proposed next iteration
+
+- [ ] Obtain one independent practitioner walkthrough on their own assembly.
+- [ ] Verify passing/failing HTML reports at desktop and mobile widths.
+- [ ] Add fresh Windows/Python 3.12 CI using the existing local checks.
+- [ ] Select FF-17 revision comparison if the consumer workflow supports it.
+- [ ] Optionally print and measure one reference fixture using existing equipment.
+
+These are proposed follow-up work, not incomplete Must requirements for the
+deterministic release. See docs/NEXT_STEPS.md. Blog publication remains pending.

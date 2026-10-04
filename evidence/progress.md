@@ -1,5 +1,25 @@
 # Progress
 
+## 2026-10-04 GitHub publication authorization
+
+Walter explicitly authorized pushing this project to GitHub and explicitly
+withheld permission to push the article to the blog. Verified the authenticated
+GitHub account as `jewbee2000` through the connector and Git Credential Manager.
+The proposed `fixtureforge` repository did not exist, so an empty public repository
+was created at https://github.com/jewbee2000/fixtureforge. No initial remote commit
+was generated; the local milestone history will be pushed intact.
+
+Reviewed the clean local tree and retained acceptance evidence (61 full-suite
+cases plus targeted follow-ups). A bounded pattern scan of all historical Git
+blobs found no supported credential patterns and no blobs over 10 MiB; this is
+not a comprehensive secret-detection claim. No application code changed in this
+publication step, so the already executed application checks were not repeated.
+Documentation now records the publication boundary and proposed next steps.
+The website checkout and its article were not edited or pushed during this step.
+
+Next: push `main`, verify the remote HEAD matches the local commit, and record
+the result. Proposed next development work is in docs/NEXT_STEPS.md.
+
 ## Final clean-source demonstration and wheel verification
 
 At clean source commit `677a997b85ab0f098996f8b69326586c99c86d87`,

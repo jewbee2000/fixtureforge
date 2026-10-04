@@ -22,6 +22,10 @@ The current preparation environment had Python 3.12.14 through the Codex runtime
 
 ## Publication boundary
 
-The intended owner is jewbee2000 and the proposed repository name is fixtureforge. A hosted repository has not been created. No remote is configured for this starter repo. Create and push only after Walter authorizes publication. The eventual blog link must be checked against the actual repository URL; do not turn a proposed URL into an apparently live link.
+Walter authorized initial GitHub publication on 2026-10-04. The project repository
+is [jewbee2000/fixtureforge](https://github.com/jewbee2000/fixtureforge), with the
+local `origin` remote pointing there. The website checkout and unpublished
+article remain outside this publication authorization. Future remote actions
+still require authorization for their scope.
 
 The matching unpublished Jekyll draft lives in the separate website-drafts checkout supplied with this package. Its normal build must not publish the draft. See that checkout's PORTFOLIO_HANDOFF.md before integrating the article.

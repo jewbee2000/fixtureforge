@@ -6,6 +6,9 @@ conservative full-path envelopes, and local reports. A two-part sensor clamp is
 the parametric example. See [the baseline decision](docs/BASELINE.md): CadQuery,
 build123d and CADCLAW already solve the underlying geometry operations.
 
+Repository: [jewbee2000/fixtureforge](https://github.com/jewbee2000/fixtureforge).
+See [next steps](docs/NEXT_STEPS.md) for the proposed next iteration.
+
 ![Rejected and corrected tool access](evidence/replay.png)
 
 Actual STEP edges and swept bounds from a deliberately seeded replay. No physical
@@ -71,4 +74,5 @@ remains unverified in this environment; static CAD images were inspected.
 
 The independent consumer was run by the same coding agent in a fresh environment;
 external practitioner adoption remains unverified. [Licensing and data handling](docs/LICENSING.md).
-The [article draft](docs/BLOG_DRAFT.md) remains unpublished. No remote is configured.
+The [article draft](docs/BLOG_DRAFT.md) remains unpublished on the blog. The
+GitHub project is public; website publication remains pending separate authorization.

@@ -33,4 +33,7 @@ The HTML report escapes input text and includes no remote resources. Output
 directories must be empty, part filenames must stay within the input directory,
 and input hashes prevent accidental part identity drift. Reports and manifests
 are local and may contain user-selected file names and geometry information.
-Nothing is uploaded. No repository remote, publication or deployment is created.
+CAD commands do not upload user inputs or reports. On 2026-10-04 Walter authorized
+publication of the project source, its synthetic examples and committed evidence
+to https://github.com/jewbee2000/fixtureforge. Local virtual environments and large
+generated artifacts remain ignored. No website or blog deployment is authorized.
