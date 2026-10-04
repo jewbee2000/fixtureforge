@@ -1,8 +1,8 @@
 # Implementation tasks
 
-All tasks are unstarted. Check off only after recording executed evidence.
+Implementation is in progress. Check off only after recording executed evidence.
 
-- [ ] M0 — Compare CADCLAW and prove the CAD stack. Gate: A concrete missing access check justifies the extension; simple independent solids validate the chosen kernel and swept-envelope construction.
+- [x] M0 — Compare CADCLAW and prove the CAD stack. Executed baseline and input checks; see docs/BASELINE.md and evidence/baseline.json.
 - [ ] M1 — Check imported geometry and generate one fixture. Gate: The external example does not call the generator; the clamp has two valid solids and independently measured dimensions.
 - [ ] M2 — Verify clearance and independent geometry. Gate: Every invalid case fails for its intended reason; unsupported motion never passes as clear.
 - [ ] M3 — Make reports useful for design review. Gate: An engineer can identify which tool path is blocked from the report and reproduce the check on imported STEP.

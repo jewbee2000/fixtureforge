@@ -82,6 +82,7 @@ ruff==0.16.10
 runtype==0.5.3
 scikit-learn==1.9.1
 scipy==1.18.1
+setuptools==82.0.1
 six==1.17.0
 sortedcontainers==2.4.0
 stack-data==0.6.3

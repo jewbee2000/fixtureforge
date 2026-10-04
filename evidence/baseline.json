@@ -1,0 +1,41 @@
+{
+  "cases": {
+    "screw_tool": {
+      "endpoint_overlap_mm3": 0.0,
+      "other_endpoint_overlap_mm3": 0.0,
+      "swept_overlap_mm3": 3.999999999999999,
+      "build123d_swept_overlap_mm3": 3.999999999999999,
+      "cadclaw_static_collisions": 0,
+      "cadclaw_sweep_collisions": 1
+    },
+    "connector": {
+      "endpoint_overlap_mm3": 0.0,
+      "other_endpoint_overlap_mm3": 0.0,
+      "swept_overlap_mm3": 3.999999999999999,
+      "build123d_swept_overlap_mm3": 3.999999999999999,
+      "cadclaw_static_collisions": 0,
+      "cadclaw_sweep_collisions": 1
+    }
+  },
+  "roundtrip_volume_mm3": 1000.0,
+  "versions": {
+    "cadclaw": "0.10.0",
+    "cadquery": "2.8.0",
+    "build123d": "0.12.0",
+    "cadquery-ocp": "7.9.3.1.1"
+  },
+  "cadclaw_source_sha256": {
+    "interference.py": "cdc9672ce413a03b3571736c239be7a37d366733a28c106647b5be6665f7b09d",
+    "disassembly.py": "af390378699345dbece2245ff7ea491ef2334ff58913bbe4884be80020398249"
+  },
+  "elapsed_seconds": 0.08218680000572931,
+  "rss_bytes_at_end": 466395136,
+  "artifacts": {
+    "connector-static.step": "cd54f39d57eefbc6959c172482101f5bacd6696b6c0b5e82ccea17187556867e",
+    "connector-swept.step": "45daa1c918debfeb3207e5b62f8d1f4c4cd34500d3d1dfc273c8ec7af69705d4",
+    "cube.step": "2d2d2bce68753c12738fc008fec688bc308c2e476bbbe199945a4ca47b7c5bed",
+    "screw_tool-static.step": "80d7010ea40d353150251cabd013122f2b6973883618792ba5839ee91f6684b4",
+    "screw_tool-swept.step": "dfbfee8f3e10e2f5cb217dc2c57a091d4808b8ca78f4a5e1fe2e4ff204b775a5"
+  },
+  "provenance": "Independently authored synthetic solids, MIT; no physical measurements"
+}

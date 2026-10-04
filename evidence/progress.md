@@ -1,5 +1,26 @@
 # Progress
 
+## M0 complete — 2026-10-04
+
+`python scripts/baseline.py` executed CADCLAW 0.10.0, CadQuery 2.8.0 and
+build123d 0.12.0 on two synthetic access cases. Both endpoint overlaps were zero;
+both full sweeps overlapped 4 mm³. CADCLAW detected the prebuilt swept solids.
+Headless STEP cube roundtrip measured 1000 mm³. See baseline.json for actual
+versions, source hashes and artifact hashes. `pip check` passed.
+
+`python -m pytest tests/acceptance/test_input_validation.py
+tests/acceptance/test_baseline_artifacts.py -q`: 13 passed. The prior import
+failure is preserved in oracle-before-implementation.txt. Gate decision is a
+narrow CadQuery access integration with reusable STEP sweep exports for CADCLAW.
+No generic validator or model feature is being added. Full-path checks reject
+Boolean failures, unlike silently treating incomplete work as clear.
+
+M1 first slice: `python -m fixtureforge build examples/sensor_24mm.json --output
+artifacts/first-24` returned 0/pass. `test_swept_access.py`: 3 passed. Fresh-process
+STEP import, deterministic geometry checks, exported SVG/HTML, and worker limits
+are implemented. External inputs, wider mutation coverage and visual inspection
+remain next.
+
 ## 2026-10-04 implementation start
 
 Read all requested contracts plus AGENT_WORKFLOW and BLOG_BRIEF. Verified Python
