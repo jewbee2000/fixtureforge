@@ -1,0 +1,127 @@
+{
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--force-reinstall",
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\projects\\fixtureforge\\dist\\fixtureforge-0.1.0-py3-none-any.whl"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8956519000057597
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "demo",
+        "--offline",
+        "--output",
+        "release-replay"
+      ],
+      "exit_code": 0,
+      "seconds": 8.847000499998103
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "build",
+        "sensor-18.json",
+        "--output",
+        "release-18"
+      ],
+      "exit_code": 0,
+      "seconds": 6.162009699997725
+    },
+    {
+      "command": [
+        "C:\\Users\\Walt\\Documents\\Codex\\2026-10-03\\g\\outputs\\consumers\\fixtureforge-20261004\\.venv\\Scripts\\python.exe",
+        "-m",
+        "fixtureforge",
+        "build",
+        "sensor-18.json",
+        "--output",
+        "release-18-repeat"
+      ],
+      "exit_code": 0,
+      "seconds": 6.292756800001371
+    }
+  ],
+  "wheel_sha256": "60435e286405e7d8d56b477a46fb90ccfb92993d4b446960884118ed279fc1ba",
+  "source_commit": "677a997b85ab0f098996f8b69326586c99c86d87",
+  "source_dirty": false,
+  "semantic_reproduction_equal": true,
+  "manifest": {
+    "schema_version": "1.0",
+    "input_sha256": "570c180699c5b12fb28688888f98deb61ca7f566b2e2aecb6024fb6cf93762d4",
+    "source_commit": "677a997b85ab0f098996f8b69326586c99c86d87",
+    "source_dirty": false,
+    "lock_sha256": "474f9f07f49d00bbff2a96287f1934b3e93edc73be45013d9b89834daeb41ab9",
+    "oracle_sha256": "c69d6bec9731ce62f4219b7b58bef1cff802babff0f8c7830110cda44d691b5b",
+    "source_files": {
+      "src/fixtureforge/access.py": "eb0d486982926935ec4fce37ebf3b0869b72076786037342ae3747fab286ccfa",
+      "src/fixtureforge/api.py": "2d92e68682ea01990a5ceff33a0eb00850bcf0d53512ed54b3f9c044331b4b0c",
+      "src/fixtureforge/cli.py": "c67eafe846420bd83fd95135c1220c635fb2151ff3cbad95203ab2c9fa7958ed",
+      "src/fixtureforge/demo.py": "4ee80d7bb28fc082ab5ad3f9dd9314c6438277fcfb93e01695d9ea3e66abe043",
+      "src/fixtureforge/files.py": "ceb5ee7498d6dfeff62c4ed6b20cdccbbfde2f1fb567d1160455d7f8d06d9048",
+      "src/fixtureforge/geometry.py": "6cbcff7568f384c5739d0d8e4ff3d290391e509c00586d8e5878e91d800e2c52",
+      "src/fixtureforge/inspection.py": "1b6d2c3b373ff4a0a0682c417bae01bb072b1fb50da08d8abfea7c6d347b4dcd",
+      "src/fixtureforge/models.py": "8682ebfe8e56794f93ebfe84ba3170e2c043158bd3054e11417093ba76881acf",
+      "src/fixtureforge/report.py": "0bb1e77d99b2cabeb3c27f805d7c5b04eeb21ed23d578d65b04dbe9c1a70e93e",
+      "src/fixtureforge/worker.py": "cdf50f020f98710d0d2c5a909b50f4a34fe01f265a4c0baeb83df1accbc575c7",
+      "src/fixtureforge/__init__.py": "4f6c0219d96dec640f0508a015dff51dac8d7f36824c154c4b021f3e9967f568",
+      "src/fixtureforge/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    "python": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "versions": {
+      "fixtureforge": "0.1.0",
+      "cadquery": "2.8.0",
+      "cadquery-ocp": "7.9.3.1.1",
+      "pydantic": "2.13.5"
+    },
+    "workers": [
+      {
+        "action": "build",
+        "elapsed_seconds": 2.3616505000027246,
+        "peak_rss_bytes": 390684672,
+        "exit_code": 0,
+        "deadline_seconds": 120,
+        "memory_limit_mb": 2048
+      },
+      {
+        "action": "verify",
+        "elapsed_seconds": 3.5548752000031527,
+        "peak_rss_bytes": 410165248,
+        "exit_code": 0,
+        "deadline_seconds": 117.6375354999982,
+        "memory_limit_mb": 2048
+      },
+      {
+        "action": "inspect",
+        "elapsed_seconds": 2.191156199995021,
+        "peak_rss_bytes": 361435136,
+        "exit_code": 1,
+        "deadline_seconds": 113.80380710000463,
+        "memory_limit_mb": 2048
+      }
+    ],
+    "assembly_transform": "identity; mm; right handed X/Y/Z",
+    "geometry_hashes": {},
+    "artifacts": {
+      "candidate.json": "570c180699c5b12fb28688888f98deb61ca7f566b2e2aecb6024fb6cf93762d4",
+      "inspection.json": "0e5e05d6540560ed44ae5b393cf246184190e5e2b6fefa23599b2450a76f2ddd",
+      "rejected-candidate.json": "707233e5c1b3b5b6f009bdb938330e4675465a4caa7f199cbc339a78f7006d71",
+      "report.html": "1d04e7fa65e81b9007579c9a665943f1ce9dcc5e431411a871f2c5accc797b25"
+    },
+    "telemetry": "none",
+    "physical_tests": "not_performed"
+  }
+}

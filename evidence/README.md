@@ -5,6 +5,8 @@ trial has been performed.
 
 * requirements-evidence.json maps all 22 requirements to executed assertions or
   explicit non-applicable/deferred dispositions, with hashes and provenance.
+* release-demo.json and release-wheel.json identify the final clean product
+  source and its verified installed-wheel replay and repeated 18 mm builds.
 * acceptance.xml / acceptance.txt contain 61 passing cases. Lint, types and
   dependency checks have separate output files.
 * baseline.json records the pinned existing-tool comparison.

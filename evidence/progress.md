@@ -1,5 +1,22 @@
 # Progress
 
+## Final clean-source demonstration and wheel verification
+
+At clean source commit `677a997b85ab0f098996f8b69326586c99c86d87`,
+`python -m fixtureforge demo --offline --output artifacts/release-demo` returned
+0. The preserved rejected/corrected reports have fail/pass statuses respectively,
+and the replay index and root manifest both exist. The latest wheel was installed
+from disk with `--no-index --no-deps --force-reinstall` in the separate consumer
+environment. Its replay passed, and two new 18 mm builds gave identical inspection
+JSON with the corrected bed-orientation label. All four refresh commands exited
+0. See release-demo.json and release-wheel.json for hashes, actual commands and
+clean source provenance. Earlier snapshots remain retained as historical runs.
+
+The project now has no remaining applicable Must work. The explicit limitations
+above remain: no physical or practitioner validation, no browser layout review,
+no OS-level egress isolation, and no generated-code or live-model execution.
+The final evidence-only commit does not change the verified product source.
+
 ## Final artifact review
 
 Review found the replay index linked a missing root manifest and did not link
