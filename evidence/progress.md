@@ -1,5 +1,18 @@
 # Progress
 
+## 2026-10-04 implementation start
+
+Read all requested contracts plus AGENT_WORKFLOW and BLOG_BRIEF. Verified Python
+3.12, Git, and hardware. Docker CLI 28.0.4 cannot reach its daemon; generated-code
+execution remains disabled. `py -3.12 -m venv .venv` created the project environment.
+Dependency resolution is in progress; no CAD result is claimed yet. Git uses a
+per-command safe.directory override for this explicitly supplied workspace.
+
+Frozen initial independent hand calculations and acceptance assertions before
+production code. `tests/oracle/reference.json` records all eight intended failure
+causes. Decisions and limits are in docs/DECISIONS.md. Next: execute baseline,
+freeze tested dependencies, then implement the smallest imported-STEP slice.
+
 2026-10-03 — Preparation only. Requirements, acceptance designs, milestones, agent guidance, and unpublished article draft created. Application code, executable acceptance tests, model campaigns, and physical validation have not been implemented or run. Next task: M0 in IMPLEMENTATION_PLAN.md.
 
 ## 2026-10-04 requirements audit
