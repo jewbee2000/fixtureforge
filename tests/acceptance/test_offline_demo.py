@@ -26,3 +26,5 @@ sys.addaudithook(deny_network)
     report = json.loads((out / 'inspection.json').read_text())
     assert report['mode'] == 'REPLAY'
     assert report['live_model_evaluation'] == 'not_run'
+    assert json.loads((out / 'manifest.json').read_text())['workers']
+    assert 'rejected/report.html' in (out / 'report.html').read_text()

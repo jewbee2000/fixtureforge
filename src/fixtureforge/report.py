@@ -60,5 +60,7 @@ body{font:16px/1.55 system-ui;margin:0;background:#eef1f0;color:#203440}main{max
 </style><main><p>FIXTUREFORGE · LOCAL CAD INSPECTION · SCHEMA 1.0</p>'''
     document += f'<h1>Access inspection: {report["status"].upper()}</h1><p class="boundary">{html.escape(BOUNDARY)}</p>{svg}'
     document += '<p><a href="inspection.json">Machine-readable result</a> · <a href="manifest.json">Provenance</a></p>'
+    if report.get('mode') == 'REPLAY':
+        document += '<p><a href="rejected/report.html">Inspect rejected candidate</a> · <a href="corrected/report.html">Inspect corrected fixture</a></p>'
     document += ''.join(cards) + '</main></html>'
     (out / 'report.html').write_text(document, encoding='utf-8')

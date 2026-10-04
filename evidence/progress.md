@@ -1,5 +1,15 @@
 # Progress
 
+## Final artifact review
+
+Review found the replay index linked a missing root manifest and did not link
+its two child reports. Added the root manifest, links to both preserved outcomes,
+and a shared remaining-time budget across replay steps. The offline acceptance
+test now asserts those artifacts. This is a reporting fix; geometry and oracle
+values are unchanged. Targeted rerun: 8 passed; lint and types passed. A fresh
+clean-commit demo follows. The requirement map overlays those latest executed
+cases on the 61-case full run, without treating repeated cases as new coverage.
+
 ## M4 completed — 2026-10-04
 
 Final full acceptance command `python -m pytest -q --tb=short
