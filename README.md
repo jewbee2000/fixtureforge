@@ -1,11 +1,11 @@
 # FixtureForge
 
-Parametric sensor fixtures checked for geometry, fit, and assembly access.
+A fixture service-access checker plus a parametric sensor-clamp example: verify that connectors, screws, and tools can actually reach their intended positions.
 
-**Status: planned; implementation has not started.** This repository contains the requirements, execution plan, acceptance design, and blog draft for an agent-assisted engineering project. It does not yet contain working application code or benchmark results.
+**Status: refined planning repository; implementation has not started.** Start with [requirements and rationale](docs/REQUIREMENTS.md), then [START_HERE.md](START_HERE.md) and the [implementation plan](IMPLEMENTATION_PLAN.md).
 
-Start with [START_HERE.md](START_HERE.md). The [implementation plan](IMPLEMENTATION_PLAN.md) defines the build and [specification](docs/SPEC.md) defines what must be proven.
+A part can be dimensionally correct while a screw cannot be tightened or a connector cannot be inserted. A repeatable access check could catch these errors before printing or machining. The sensor clamp gives a bounded practical example aligned with Walter's CAD, printing, and manufacturing interests.
 
-The intended demonstration: Enter a sensor diameter, length, mounting pitch, and connector keepout. Generate a two-part clamp, STEP/STL files, and an inspection sheet. Show a visually plausible candidate rejected because a screw head or connector cannot be reached, then a corrected geometry.
+Existing tools already cover parts of this problem. M0 must compare them and establish a useful addition or integration. The plan makes no claim of unique invention or practitioner adoption. All software and engineering validation remain pending.
 
-The final release must run offline without hardware or a model key. Live AI evaluations and physical validation, where applicable, are separate and explicitly labeled.
+The first release must work without hardware or model credentials. Live AI experiments and physical tests are separate. Commits stay local; publication is not authorized.

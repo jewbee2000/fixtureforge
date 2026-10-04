@@ -1,11 +1,14 @@
 # Implementation tasks
 
-All tasks below are unstarted. The preparation commit contains specifications and editorial drafts, not application code.
+All tasks are unstarted. Check off only after recording executed evidence.
 
-- [ ] M0 — Prove the CAD environment and freeze dimensions. Evidence: CAD import/export works headlessly; supported Python/kernel versions are locked; dimension queries recover the known block.
-- [ ] M1 — Build one deterministic fixture. Evidence: Two valid solids and hand-checked nominal dimensions; cleanly reject impossible input.
-- [ ] M2 — Build independent geometry checks. Evidence: Every invalid case fails for the expected reason; no oracle calls geometry-builder dimension helpers.
-- [ ] M3 — Add constrained generation and report. Evidence: Rejected candidate and corrected geometry are visible; assumptions and geometric limits are prominent.
-- [ ] M4 — Prepare the portfolio release. Evidence: A fresh environment builds examples and validates exports. A physical fit check remains explicitly optional.
+- [ ] M0 — Compare CADCLAW and prove the CAD stack. Gate: A concrete missing access check justifies the extension; simple independent solids validate the chosen kernel and swept-envelope construction.
+- [ ] M1 — Check imported geometry and generate one fixture. Gate: The external example does not call the generator; the clamp has two valid solids and independently measured dimensions.
+- [ ] M2 — Verify clearance and independent geometry. Gate: Every invalid case fails for its intended reason; unsupported motion never passes as clear.
+- [ ] M3 — Make reports useful for design review. Gate: An engineer can identify which tool path is blocked from the report and reproduce the check on imported STEP.
+- [ ] M4 — Verify adoption and prepare the local release. Gate: All applicable Must checks pass; CAD evidence is clearly separate from physical printing or strength validation.
 
-Update this file only after checking the milestone evidence. See IMPLEMENTATION_PLAN.md for dependencies and estimates.
+- [ ] Record dispositions for every Should/Could item and verify Won't claims remain excluded.
+- [ ] Complete the independent consumer walkthrough and compare its cost with the baseline.
+
+See IMPLEMENTATION_PLAN.md and docs/REQUIREMENTS.md.

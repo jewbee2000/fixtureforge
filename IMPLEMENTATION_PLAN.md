@@ -1,86 +1,82 @@
 # FixtureForge implementation plan
 
+Revised 2026-10-04. Begin with [requirements and rationale](docs/REQUIREMENTS.md). The previous all-features-at-once plan is superseded by this useful-core-first sequence. Application implementation has not started.
+
 ## Purpose and feasibility
 
-Parametric sensor fixtures checked for geometry, fit, and assembly access.
+A fixture service-access checker plus a parametric sensor-clamp example: verify that connectors, screws, and tools can actually reach their intended positions. A part can be dimensionally correct while a screw cannot be tightened or a connector cannot be inserted. A repeatable access check could catch these errors before printing or machining. The sensor clamp gives a bounded practical example aligned with Walter's CAD, printing, and manufacturing interests.
 
-This connects directly to Walter's printed bicycle parts, Onshape/SolidWorks work, mechatronic assemblies, and manufacturing interests. It provides visual and downloadable engineering artifacts that complement the other two software-heavy projects.
+The proposed contribution is explicit tool/connector access contracts and conservative straight-path clearance checks on imported geometry, with the clamp as one use case. This is the least established gap: evaluate CADCLAW first and build a compatible extension if that is sufficient. Confidence: low-to-medium until the M0 comparison and external STEP example work.
 
-High for a restricted parameterized fixture and automated geometry checks; medium for reliable generated CAD code; physical fit and strength need measurements. The core uses a deterministic CAD builder. The optional model proposes parameters first, which is easier to verify than arbitrary CAD programs.
+80–120 engineering hours as a provisional range, with the widest uncertainty. Re-estimate after the M0 CADCLAW and swept-envelope spike; a small integration is preferable if it solves the use case.
 
-65–95 engineering hours for the complete original scope. First validate build123d and STEP round-tripping before investing in interface work. Optional owner review: 30–60 minutes for the fixture assumptions and final artifact; a later print-and-fit experiment is useful but not required.
+Core software can be built with minimal owner guidance, but novelty and adoption are not established. Use existing libraries and routine design judgment. Do not require physical measurements to finish a software release; do not claim those measurements occurred.
 
-## The result a visitor should see
+## Build sequence
 
-Enter a sensor diameter, length, mounting pitch, and connector keepout. Generate a two-part clamp, STEP/STL files, and an inspection sheet. Show a visually plausible candidate rejected because a screw head or connector cannot be reached, then a corrected geometry.
+### M0 Compare CADCLAW and prove the CAD stack
 
-## Technical approach
+Work: Run the two access cases against existing tools; select reuse boundaries. Prove headless STEP round-trip, freeze path restrictions, collision tolerances, selectors, and intended-contact semantics.
 
-Python 3.12 if supported by the selected stable build123d release; otherwise pin a supported Python version after the spike. build123d/OpenCascade, Pydantic, NumPy, pytest, Hypothesis, Typer. Start with CLI, exported SVG/PNG views, and an HTML inspection report. Add an interactive mesh viewer only after geometry verification.
+Exit evidence: A concrete missing access check justifies the extension; simple independent solids validate the chosen kernel and swept-envelope construction.
 
-The public repository must be useful without live AI. The strongest evidence is a requirement that becomes an independent check, a candidate that fails it, and a justified repair. Do not turn the project into a generic chat interface. Retain the original research's specification, verification, and bounded repair approach while narrowing the first release to something one coding agent can complete.
+Primary requirements: FF-01 FF-13. All earlier contracts remain regression requirements.
 
-## M0 Prove the CAD environment and freeze dimensions
+### M1 Check imported geometry and generate one fixture
 
-Work: Install a supported stable build123d stack; create/export/reimport a simple block with a hole. Finalize coordinate system, sensor envelope, fixture rules, and hand measurements.
+Work: Build AccessSpec/import first, one external bracket example, then the 24 mm clamp with STEP/STL export.
 
-Exit evidence: CAD import/export works headlessly; supported Python/kernel versions are locked; dimension queries recover the known block.
+Exit evidence: The external example does not call the generator; the clamp has two valid solids and independently measured dimensions.
 
-Requirements: FF-01 FF-03 FF-08. Planning estimate: 12–18 h.
+Primary requirements: FF-02 FF-03 FF-08 FF-14. All earlier contracts remain regression requirements.
 
+### M2 Verify clearance and independent geometry
 
-## M1 Build one deterministic fixture
+Work: Build conservative straight-path sweeps, keepout checks, six reference clamps, eight invalid cases, and the between-samples obstruction case.
 
-Work: Implement validated FixtureSpec and base/clamp generation for the 24 mm reference case, plus STEP/STL export.
+Exit evidence: Every invalid case fails for its intended reason; unsupported motion never passes as clear.
 
-Exit evidence: Two valid solids and hand-checked nominal dimensions; cleanly reject impossible input.
+Primary requirements: FF-04 FF-05 FF-06 FF-07 FF-15 FF-19. All earlier contracts remain regression requirements.
 
-Requirements: FF-01 FF-02 FF-03 FF-08. Planning estimate: 15–22 h.
+### M3 Make reports useful for design review
 
+Work: Show obstruction pairs, paths, datums, clearance, and assumptions. Add optional margin/sequence and revision comparison; model JSON is later work.
 
-## M2 Build independent geometry checks
+Exit evidence: An engineer can identify which tool path is blocked from the report and reproduce the check on imported STEP.
 
-Work: Add reimported geometry inspection, connector and fastener keepouts, assembly sampling, six references, and eight invalid cases.
+Primary requirements: FF-09 FF-10 FF-11 FF-16 FF-17 FF-18. All earlier contracts remain regression requirements.
 
-Exit evidence: Every invalid case fails for the expected reason; no oracle calls geometry-builder dimension helpers.
+### M4 Verify adoption and prepare the local release
 
-Requirements: FF-04 FF-05 FF-06 FF-07. Planning estimate: 15–22 h.
+Work: Run independent consumer walkthrough, fresh installation, boundary sweeps, resource/robustness checks, lint/types/tests, and exported artifact inspection. Update the blog honestly.
 
+Exit evidence: All applicable Must checks pass; CAD evidence is clearly separate from physical printing or strength validation.
 
-## M3 Add constrained generation and report
+Primary requirements: FF-12 FF-20 FF-21 FF-22. All earlier contracts remain regression requirements.
 
-Work: Accept model-proposed JSON, show failure-guided parameter repair using replay, and export inspection sheets. Freeform CAD generation is optional.
+## Method and dependencies
 
-Exit evidence: Rejected candidate and corrected geometry are visible; assumptions and geometric limits are prominent.
+Use Python with a repository-local pinned environment; select compatible versions during M0. Read SPEC.md for existing reference-case constants. Requirements proceed M0 → M1 → M2 → M3 → M4; the machine-readable register identifies primary milestones and baseline dependencies. Tests and documentation evolve with each slice rather than accumulating at the end.
 
-Requirements: FF-09 FF-10 FF-11. Planning estimate: 10–15 h.
-
-
-## M4 Prepare the portfolio release
-
-Work: Exercise boundary configurations, document commands, capture geometry views, record evidence, and finish the blog.
-
-Exit evidence: A fresh environment builds examples and validates exports. A physical fit check remains explicitly optional.
-
-Requirements: FF-07 FF-08 FF-11 FF-12. Planning estimate: 13–18 h.
-
+For every nontrivial feature: state the requirement, write an independent failing check, implement the smallest slice, inspect actual output, record evidence, and commit locally. Preserve known failures and explain repairs. A product model, elaborate UI, web service, or paid API is not needed for the useful first release. Reuse primary-source libraries after verifying current installation and capabilities.
 
 ## Model evaluation after the deterministic release
+
 
 Freeze 20 evaluation specifications that were not used to tune the generator. For any live campaign, run each specification three times under one-shot JSON generation and three times under bounded repair: 120 model trials total. Compare against the deterministic parameterized builder on the same feasible specifications. Report validity, requirement satisfaction, attempts, and critical failures separately. A goal of 16 of 20 successful specifications is aspirational; all shipped reference designs must satisfy every critical rule regardless of model scores.
 
 The evaluator's inputs are frozen before the campaign. One-shot and repair runs use the same budgets except for the explicitly reported repair allowance. Capture all attempts; do not discard unsuccessful trials. Separate a replay demonstration from a live model evaluation. These comparisons are project-local experiments, not claims about every AI model or engineering task.
 
-## Risks and fallback decisions
+## Risks and decision rules
 
-Robust geometry and assembly reasoning are the main risks. Limit the parameter domain, reject impossible combinations, measure exported solids, and show rejected cases. An API call reporting success does not establish manufacturability. If build123d cannot be installed in the current runtime, resolve that environment problem before proceeding; do not substitute mock meshes and present them as CAD results. A print is optional evidence, not something an agent can truthfully simulate.
+The largest product risk is duplicating existing software or building a demonstration that accepts only its own fixtures. The M0 comparison and M4 independent consumer walkthrough are release gates. Prefer a narrow library/plugin when it satisfies the same needs. Do not silently drop external integration in order to finish a more impressive-looking demo.
 
-## Owner involvement
+If a technical dependency or required semantic cannot be implemented, record it as blocked or unsupported and do not label the release complete. If the entire useful contribution disappears after the baseline comparison, stop broad implementation and report the concrete result; do not invent novelty or ask for routine design approvals.
 
-No response from Walter is needed for routine naming, data models, fixtures, UI choices, or test implementation within this specification. The agent can define missing synthetic examples and document assumptions. Ask only when a decision would materially change the project's claim or exceed the authorized environment. An optional final review of the first-person article would improve the voice; no invented memory or measured result should be used to avoid that review.
+## Owner involvement and publication
 
-Before any live API campaign, a model adapter, credential, and spending ceiling are needed. None is required for the deterministic product or replay. Physical validation requires Walter to perform or arrange the measurement. Remote publication requires a later instruction because the present instruction forbids pushes.
+No owner guidance is needed for routine architecture, naming, examples, or tests within these requirements. Physical tests, paid live model campaigns, and remote publication require separate resources or authorization. Do not contact maintainers or prospective users automatically. No pushes, deployment, or remote commits. Local commits are authorized.
 
 ## Definition of finished
 
-All required behaviors in docs/SPEC.md have independent evidence. The README gives a working fresh-clone setup and offline demo. Artifacts are real, versioned, and labeled by scope. The code, tests, environment lockfile, architecture, evidence, and article are locally committed. A future publication step creates or selects the GitHub repository, pushes the reviewed commits, verifies public links, then publishes the matching website article. Until that later step, remote GitHub and live-site completion remain pending.
+All applicable Must requirements have independent executed evidence. Should/Could omissions and Won't scope are explicit. A clean consumer walkthrough works on a non-default input, and reports show a real detected failure and repair. The first-person article is updated only from observed work, remains unpublished, and has no invented anecdotes, physical measurements, or live-model scores. Hosted repositories and website publication remain pending a later instruction.

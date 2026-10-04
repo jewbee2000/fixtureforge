@@ -1,6 +1,6 @@
 # FixtureForge specification
 
-Status: implementation-ready proposal. No implementation or benchmark results are claimed.
+Status: refined proposal; M0 baseline comparison is pending. No implementation or benchmark results are claimed. Read [REQUIREMENTS.md](REQUIREMENTS.md) first for priorities, rationale, external-user interfaces, and release gates.
 
 
 ## Restricted fixture family
@@ -19,7 +19,7 @@ Datum A is the bottom mounting plane Z=0. Datum B is the plane X=0 at the center
 
 Check exact BREP validity, positive volume, and expected solid count before mesh export. The lower base and upper clamp must be separate valid single solids. Verify bore diameter and hole locations from exported/reimported STEP geometry, not just the original input variables. Use independent section/intersection queries and compare distances to specified tolerances. A geometric numerical tolerance of 0.05 mm is an acceptance threshold for software round-tripping; it does not describe printer accuracy.
 
-Perform collision tests between each part and the sensor envelope, connector envelope, fastener envelope, and tool envelope, excluding explicitly intended contact interfaces and the fastener material passing through its intended clearance hole. Encode exclusions narrowly and test them; a blanket ignore list would hide real collisions. Validate the nominal insertion path using sampled translations along the chosen assembly direction and document that sampling cannot prove all continuous motions are collision-free.
+Perform collision tests between each part and the sensor envelope, connector envelope, fastener envelope, and tool envelope, excluding explicitly intended contact interfaces and the fastener material passing through its intended clearance hole. Encode exclusions narrowly and test them; a blanket ignore list would hide real collisions. For supported fixed-orientation straight paths, validate the complete conservative swept envelope under FF-15. Sampled translations may illustrate the motion but cannot justify a continuous-path pass; unsupported motion is explicitly inconclusive.
 
 Print each half with its flat split or mounting face on the bed, as appropriate. Report orientation and local geometric overhang warnings. Do not claim support-free printability, adequate clamping force, structural strength, thermal stability, fatigue life, or general DFM compliance from geometric checks. There is no FEA, slicer, G-code, or machine control in v1.
 
@@ -37,19 +37,35 @@ Create six reference configurations spanning diameters 12, 16, 20, 24, 32, and 4
 
 The principal engineering result is a reproducible mapping from requirements to validated geometry. Optional real printing adds a separate inspection sheet with instrument resolution, measurement locations, print profile, actual dimensions, and photographs. Never substitute CAD dimensions for measured dimensions in that sheet.
 
+## Public interface applicability
+
+The two-solid count, six valid clamps, eight invalid clamps, and 0.05 mm dimensional tolerance apply to the generated sensor-clamp family. Imported assemblies may have any supported declared part count; they are judged against AccessSpec, not the clamp dimension rules. A clearance pass means the conservative envelope is clear under the stated nominal geometry and tolerance. An envelope intersection can be a conservative obstruction, not proof that a real articulated tool could never fit. Reports must distinguish these outcomes.
+
 ## Acceptance requirements
 
-| ID | Required behavior | Independent acceptance evidence |
-| --- | --- | --- |
-| FF-01 | FixtureSpec validates units, bounds, and coupled feasibility constraints before geometry construction. | Reject negative, nonfinite, out-of-range, and impossible pitch/diameter combinations with a specific explanation. |
-| FF-02 | Every accepted configuration produces exactly two valid, positive-volume single solids. | Inspect each BREP and STEP reimport in a fresh process; reject null, merged, or self-invalid geometry. |
-| FF-03 | Bore, hole pitches, base thickness, and datums agree with requirements within 0.05 mm. | Independent section/edge/plane queries of reimported STEP measure dimensions. |
-| FF-04 | Sensor and connector keepouts remain clear except for explicitly intended contact surfaces. | Boolean intersections and known collision mutations verify the rule and its exclusions. |
-| FF-05 | Fastener and tool-access envelopes remain usable in the prescribed assembly sequence. | Sampled assembly and tool sweeps identify intentional impossible-access configurations. |
-| FF-06 | Wall, base, and build-volume requirements are checked on generated geometry. | Deliberately thin or oversized parts fail even if their input metadata claims compliance. |
-| FF-07 | All six reference designs pass and all eight invalid cases are rejected for their intended cause. | Frozen inventory and explicit case-to-requirement mapping, not just counting nonzero exits. |
-| FF-08 | STEP and STL export preserve units and per-part identity; round trips remain within tolerance. | Reimport STEP, compare volume/bounds, and check STL watertightness and triangle orientation. |
-| FF-09 | Offline demonstration shows a rejected candidate and a corrected fixture without a model service. | Run without credentials and network; inspect actual generated CAD and reports. |
-| FF-10 | Any generated-code experiment uses bounded isolation and a read-only evaluator. | Timeout, path-escape, and evaluator-write probes fail; JSON-only generation cannot execute code. |
-| FF-11 | Inspection output separates computed geometry from unmeasured physical fit and strength. | Report labels geometric checks, assumptions, and absent physical tests explicitly. |
-| FF-12 | Fresh installation and deterministic inputs reproduce the required artifacts within numerical tolerance. | Record stable versions; compare geometry semantically rather than assuming STEP file bytes are invariant. |
+The authoritative rationale, applicability, and independent acceptance evidence for these requirements are in [REQUIREMENTS.md](REQUIREMENTS.md). Reference-case behavior above does not replace the public-interface requirements.
+
+| ID | Priority | Milestone | Requirement |
+| --- | --- | --- | --- |
+| FF-01 | must | M0 | FixtureSpec validates units, bounds, and coupled feasibility constraints before geometry construction. |
+| FF-02 | must | M1 | Every accepted configuration produces exactly two valid, positive-volume single solids. |
+| FF-03 | must | M1 | Bore, hole pitches, base thickness, and datums agree with requirements within 0.05 mm. |
+| FF-04 | must | M2 | Sensor and connector keepouts remain clear except for explicitly intended contact surfaces. |
+| FF-05 | must | M2 | Fastener and tool-access envelopes remain usable in the prescribed assembly sequence. |
+| FF-06 | must | M2 | Wall, base, and build-volume requirements are checked on generated geometry. |
+| FF-07 | must | M2 | All six reference designs pass and all eight invalid cases are rejected for their intended cause. |
+| FF-08 | must | M1 | STEP and STL export preserve units and per-part identity; round trips remain within tolerance. |
+| FF-09 | must | M3 | Offline demonstration shows a rejected candidate and a corrected fixture without a model service. |
+| FF-10 | must | M3 | Any generated-code experiment uses bounded isolation and a read-only evaluator. |
+| FF-11 | must | M3 | Inspection output separates computed geometry from unmeasured physical fit and strength. |
+| FF-12 | must | M4 | Fresh installation and deterministic inputs reproduce the required artifacts within numerical tolerance. |
+| FF-13 | must | M0 | Compare CADCLAW and direct CadQuery/build123d checks on a screw-tool obstruction and connector insertion case before building the checker. |
+| FF-14 | must | M1 | Check externally authored STEP parts using an explicit AccessSpec JSON without calling the clamp generator. |
+| FF-15 | must | M2 | For v1, tool and connector paths are fixed-orientation straight translations of supported convex box/cylinder envelopes; test the entire conservative swept envelope. |
+| FF-16 | should | M3 | Support user-specified tool clearance margins and removal/reassembly sequences with explicit remaining-part occupancy. |
+| FF-17 | should | M3 | Compare inspection reports between CAD revisions and locate changed obstruction pairs in a visual view. |
+| FF-18 | could | M3 | Add model-proposed FixtureSpec JSON and bounded repair as an optional demonstration after deterministic geometry and access checking work. |
+| FF-19 | must | M2 | Publish a versioned input and result schema, stable requirement IDs, public Python API, and a scriptable CLI with clear failure semantics. |
+| FF-20 | must | M4 | Declare resource limits and measure repeatable performance for the supported workload in the pinned environment. |
+| FF-21 | must | M4 | Keep offline workflows local by default and document dependency, fixture, manual, and example licensing. |
+| FF-22 | must | M4 | Demonstrate adoption from a separate clean consumer directory using only the documented public interface. |

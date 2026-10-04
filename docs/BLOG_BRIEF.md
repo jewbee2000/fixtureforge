@@ -38,3 +38,7 @@ For the agent, the simplest version of the job is to propose dimensions in a str
 There is an obvious limit here: checking a CAD model does not tell me how a printed part will fit or how much load it can carry. I want the report to be clear about that. A later print-and-measure experiment would be a good excuse to get away from the computer, but I do not want to label the model's dimensions as measurements of a part that does not exist.
 
 The result I am hoping for is a modest but useful loop: describe a fixture, generate it, discover what is wrong, and improve it. A clamp that leaves room for the wrench would be a fine place to start.
+
+## Usefulness audit of 2026-10-04
+
+The current contribution is: A fixture service-access checker plus a parametric sensor-clamp example: verify that connectors, screws, and tools can actually reach their intended positions. Explain the existing tools, the narrow gap tested in M0, the non-default consumer example, one real failure, and any reason the result is best delivered as an integration. Do not claim a first-of-its-kind tool. Product AI features are optional. The current draft remains prospective; rewrite it after implementation from actual evidence and [REQUIREMENTS.md](REQUIREMENTS.md).
